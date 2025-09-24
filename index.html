@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopcash Liberação - Sistema de Consulta de Chaves</title>
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <style>
+        :root {
+            /* Cores principais */
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            
+            /* Cores semânticas */
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --info-color: #06b6d4;
+            
+            /* Cores neutras */
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            
+            /* Layout */
+            --sidebar-width: 280px;
+            --sidebar-collapsed-width: 80px;
+            --header-height: 64px;
+            
+            /* Sombras */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            
+            /* Transições */
+            --transition-fast: 0.15s ease-in-out;
+            --transition-normal: 0.3s ease-in-out;
+            --transition-slow: 0.5s ease-in-out;
+        }
+        
+        /* Dark theme */
+        [data-theme="dark"] {
+            --gray-50: #1f2937;
+            --gray-100: #374151;
+            --gray-200: #4b5563;
+            --gray-300: #6b7280;
+            --gray-400: #9ca3af;
+            --gray-500: #d1d5db;
+            --gray-600: #e5e7eb;
+            --gray-700: #f3f4f6;
+            --gray-800: #f9fafb;
+            --gray-900: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--gray-50);
+            color: var(--gray-900);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Layout principal */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: white;
+            box-shadow: var(--shadow-lg);
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            z-index: 1000;
+            transition: transform var(--transition-normal);
+            overflow-y: auto;
+        }
+        
+        .sidebar.collapsed {
+            width: var(--sidebar-collapsed-width);
+        }
+        
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .sidebar-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        .sidebar-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            white-space: nowrap;
+            opacity: 1;
+            transition: opacity var(--transition-fast);
+        }
+        
+        .sidebar.collapsed .sidebar-title {
+            opacity: 0;
+        }
+        
+        .sidebar-nav {
+            padding: 1rem 0;
+        }
+        
+        .nav-group {
+            margin-bottom: 2rem;
+        }
+        
+        .nav-group-title {
+            padding: 0 1.5rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--gray-500);
+            letter-spacing: 0.05em;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            color: var(--gray-700);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+        
+        .nav-item:hover {
+            background-color: var(--gray-100);
+            color: var(--primary-color);
+        }
+        
+        .nav-item.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .nav-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: var(--primary-dark);
+        }
+        
+        .nav-icon {
+            width: 20px;
+            margin-right: 0.75rem;
+            text-align: center;
+        }
+        
+        .nav-text {
+            flex: 1;
+            white-space: nowrap;
+        }
+        
+        .nav-badge {
+            background-color: var(--error-color);
+            color: white;
+            font-size: 0.75rem;
+            padding: 0.125rem 0.5rem;
+            border-radius: 9999px;
+            min-width: 1.25rem;
+            text-align: center;
+        }
+        
+        /* Main content */
+        .main-content {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            transition: margin-left var(--transition-normal);
+        }
+        
+        .sidebar.collapsed + .main-content {
+            margin-left: var(--sidebar-collapsed-width);
+        }
+        
+        /* Header */
+        .header {
+            height: var(--header-height);
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .sidebar-toggle {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 6px;
+            transition: all var(--transition-fast);
+        }
+        
+        .sidebar-toggle:hover {
+            background-color: var(--gray-100);
+            color: var(--gray-900);
+        }
+        
+        .breadcrumbs {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-500);
+            font-size: 0.875rem;
+        }
+        
+        .breadcrumb-item {
+            color: var(--gray-500);
+        }
+        
+        .breadcrumb-item.active {
+            color: var(--gray-900);
+            font-weight: 500;
+        }
+        
+        .header-right {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .search-bar {
+            position: relative;
+            width: 300px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            background-color: var(--gray-50);
+            transition: all var(--transition-fast);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background-color: white;
+            box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-400);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .header-btn {
+            position: relative;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 6px;
+            color: var(--gray-600);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .header-btn:hover {
+            background-color: var(--gray-100);
+            color: var(--gray-900);
+        }
+        
+        .notification-badge {
+            position: absolute;
+            top: 0.25rem;
+            right: 0.25rem;
+            width: 8px;
+            height: 8px;
+            background-color: var(--error-color);
+            border-radius: 50%;
+        }
+        
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+        
+        /* Content area */
+        .content {
+            padding: 2rem;
+        }
+        
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        /* Forms */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--gray-700);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            transition: all var(--transition-fast);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-secondary {
+            background-color: var(--gray-200);
+            color: var(--gray-700);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--gray-300);
+        }
+        
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+            border-radius: 8px;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .table th {
+            background-color: var(--gray-50);
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+        
+        .table tbody tr:hover {
+            background-color: var(--gray-50);
+        }
+        
+        /* Login page */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            padding: 2rem;
+        }
+        
+        .login-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            padding: 3rem;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .login-logo {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 0 auto 1rem;
+        }
+        
+        .login-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+        }
+        
+        .login-subtitle {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+        }
+        
+        /* Loading states */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--gray-300);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Toast notifications */
+        .toast {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            z-index: 9999;
+            transform: translateX(100%);
+            transition: transform var(--transition-normal);
+        }
+        
+        .toast.show {
+            transform: translateX(0);
+        }
+        
+        .toast-success {
+            border-left: 4px solid var(--success-color);
+        }
+        
+        .toast-error {
+            border-left: 4px solid var(--error-color);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .header {
+                padding: 0 1rem;
+            }
+            
+            .search-bar {
+                display: none;
+            }
+            
+            .content {
+                padding: 1rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Copy button */
+        .copy-btn {
+            background: none;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            padding: 0.375rem;
+            color: var(--gray-600);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-size: 0.875rem;
+        }
+        
+        .copy-btn:hover {
+            background-color: var(--gray-100);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .copy-btn.copied {
+            background-color: var(--success-color);
+            border-color: var(--success-color);
+            color: white;
+        }
+         
+         /* Utility classes */
+         .hidden { display: none !important; }
+         .text-center { text-align: center; }
+          .text-right { text-align: right; }
+           .mb-0 { margin-bottom: 0; }
+            .mb-1 { margin-bottom: 0.5rem; }
+             .mb-2 { margin-bottom: 1rem; }
+              .mb-3 { margin-bottom: 1.5rem; }
+               .mt-2 { margin-top: 1rem; }
+                .flex { display: flex; }
+                 .items-center { align-items: center; }
+                  .justify-between { justify-content: space-between; }
+                   .gap-2 { gap: 1rem; }
+        </style>
+    </head>
+    <body>
+        <!-- Login Page -->
+        <div id="loginPage" class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <div class="login-logo">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h1 class="login-title">Shopcash Liberação</h1>
+                    <p class="login-subtitle">Sistema de Consulta de Chaves</p>
+                </div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" for="clientId">Código de Acesso</label>
+                    <input type="text" id="clientId" class="form-input" placeholder="Digite seu código de cliente" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="password">Senha</label>
+                    <input type="password" id="password" class="form-input" placeholder="Digite sua senha" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <span id="loginBtnText">Entrar</span>
+                    <span id="loginLoading" class="loading hidden"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" class="app-container hidden">
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <i class="fas fa-key"></i>
+                </div>
+                <h2 class="sidebar-title">Shopcash</h2>
+            </div>
+            
+            <div class="sidebar-nav">
+                <div class="nav-group">
+                    <div class="nav-group-title">Principal</div>
+                    <a href="#" class="nav-item active" data-page="dashboard">
+                        <i class="nav-icon fas fa-home"></i>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="search">
+                        <i class="nav-icon fas fa-search"></i>
+                        <span class="nav-text">Consultar Chaves</span>
+                    </a>
+                </div>
+                
+                <div class="nav-group">
+                    <div class="nav-group-title">Relatórios</div>
+                    <a href="#" class="nav-item">
+                        <i class="nav-icon fas fa-chart-bar"></i>
+                        <span class="nav-text">Relatórios</span>
+                        <span class="nav-badge">3</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i class="nav-icon fas fa-history"></i>
+                        <span class="nav-text">Histórico</span>
+                    </a>
+                </div>
+                
+                <div class="nav-group">
+                    <div class="nav-group-title">Configurações</div>
+                    <a href="#" class="nav-item">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <span class="nav-text">Configurações</span>
+                    </a>
+                    <a href="#" class="nav-item" onclick="logout()">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
+                        <span class="nav-text">Sair</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" onclick="toggleSidebar()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    
+                    <nav class="breadcrumbs">
+                        <span class="breadcrumb-item">Shopcash</span>
+                        <i class="fas fa-chevron-right"></i>
+                        <span class="breadcrumb-item active" id="currentPage">Dashboard</span>
+                    </nav>
+                </div>
+                
+                <div class="header-right">
+                    <div class="search-bar">
+                        <i class="search-icon fas fa-search"></i>
+                        <input type="text" class="search-input" placeholder="Buscar...">
+                    </div>
+                    
+                    <div class="header-actions">
+                        <button class="header-btn" onclick="toggleTheme()">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        
+                        <button class="header-btn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge"></span>
+                        </button>
+                        
+                        <div class="user-avatar" id="userAvatar">
+                            <span id="userInitials">U</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Dashboard Page -->
+                <div id="dashboardPage" class="page">
+                    <!-- Client Info Card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-user"></i>
+                                Informações do Cliente
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Nome</label>
+                                    <div id="clientName" class="form-input" style="background-color: var(--gray-50); border: none;">-</div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">CNPJ</label>
+                                    <div id="clientCnpj" class="form-input" style="background-color: var(--gray-50); border: none;">-</div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <div id="clientEmail" class="form-input" style="background-color: var(--gray-50); border: none;">-</div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Contatos</label>
+                                    <div id="clientContacts" class="form-input" style="background-color: var(--gray-50); border: none;">-</div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Endereço</label>
+                                <div id="clientAddress" class="form-input" style="background-color: var(--gray-50); border: none;">-</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-key" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                                <h3 style="font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem;" id="totalKeys">0</h3>
+                                <p style="color: var(--gray-500);">Total de Chaves</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-check-circle" style="font-size: 2rem; color: var(--success-color); margin-bottom: 1rem;"></i>
+                                <h3 style="font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem;" id="activeKeys">0</h3>
+                                <p style="color: var(--gray-500);">Chaves Ativas</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-clock" style="font-size: 2rem; color: var(--warning-color); margin-bottom: 1rem;"></i>
+                                <h3 style="font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem;" id="expiringSoon">0</h3>
+                                <p style="color: var(--gray-500);">Expirando em Breve</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Page -->
+                <div id="searchPage" class="page hidden">
+                    <!-- Search Form -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-search"></i>
+                                Consultar Chaves de Liberação
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <form id="searchForm">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label" for="codigoAvlock">Código AvLock</label>
+                                        <input type="text" id="codigoAvlock" class="form-input" placeholder="Digite o código AvLock (deixe vazio para buscar todos)">
+                                        <small style="color: var(--gray-500); font-size: 0.75rem; margin-top: 0.25rem; display: block;">
+                                            Deixe em branco para buscar todos os códigos do período
+                                        </small>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="ano">Ano</label>
+                                        <input type="number" id="ano" class="form-input" placeholder="2024" min="2020" max="2030" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="mes">Mês</label>
+                                        <select id="mes" class="form-input">
+                                            <option value="">Todos os meses</option>
+                                            <option value="1">Janeiro</option>
+                                            <option value="2">Fevereiro</option>
+                                            <option value="3">Março</option>
+                                            <option value="4">Abril</option>
+                                            <option value="5">Maio</option>
+                                            <option value="6">Junho</option>
+                                            <option value="7">Julho</option>
+                                            <option value="8">Agosto</option>
+                                            <option value="9">Setembro</option>
+                                            <option value="10">Outubro</option>
+                                            <option value="11">Novembro</option>
+                                            <option value="12">Dezembro</option>
+                                        </select>
+                                        <small style="color: var(--gray-500); font-size: 0.75rem; margin-top: 0.25rem; display: block;">
+                                            Deixe em branco para buscar todos os meses do ano
+                                        </small>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex gap-2">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-search"></i>
+                                        Pesquisar
+                                    </button>
+                                    <button type="button" class="btn btn-secondary" onclick="clearSearch()">
+                                        <i class="fas fa-times"></i>
+                                        Limpar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-list"></i>
+                                Resultados da Pesquisa
+                            </h3>
+                            <div class="flex gap-2">
+                                <button id="exportCsvBtn" class="btn btn-secondary" onclick="exportToCSV()" style="display: none;">
+                                    <i class="fas fa-download"></i>
+                                    Exportar CSV
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="searchResults">
+                                <div class="text-center" style="padding: 3rem; color: var(--gray-500);">
+                                    <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i>
+                                    <p>Utilize o formulário acima para pesquisar chaves de liberação</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Configuração do Supabase
+        const SUPABASE_URL = 'https://ohexwiamhgsnahrjynko.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9oZXh3aWFtaGdzbmFocmp5bmtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg1NDM4MTcsImV4cCI6MjA3NDExOTgxN30.MYpemlbM2iYbnKWAGDWs8cbLJTKi0wK-o8P9jUDP59E';
+        
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        // Estado da aplicação
+        let currentUser = null;
+        let isSidebarCollapsed = false;
+        
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar se já está logado
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                showMainApp();
+            }
+            
+            // Event listeners
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            document.getElementById('searchForm').addEventListener('submit', handleSearch);
+            
+            // Navigation
+            document.querySelectorAll('.nav-item[data-page]').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const page = this.dataset.page;
+                    showPage(page);
+                });
+            });
+            
+            // Set current year in search form
+            document.getElementById('ano').value = new Date().getFullYear();
+        });
+        
+        // Login
+        async function handleLogin(e) {
+            e.preventDefault();
+            
+            const clientId = document.getElementById('clientId').value;
+            const password = document.getElementById('password').value;
+            
+            showLoading(true);
+            
+            try {
+                // Buscar cliente no Supabase
+                const { data, error } = await supabase
+                    .from('clientes')
+                    .select('*')
+                    .eq('id_cliente', clientId)
+                    .eq('senha', password)
+                    .single();
+                
+                if (error || !data) {
+                    throw new Error('Credenciais inválidas');
+                }
+                
+                currentUser = data;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                
+                showToast('Login realizado com sucesso!', 'success');
+                showMainApp();
+                
+            } catch (error) {
+                console.error('Erro no login:', error);
+                showToast('Erro no login: ' + error.message, 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+        
+        // Mostrar aplicação principal
+        function showMainApp() {
+            document.getElementById('loginPage').classList.add('hidden');
+            document.getElementById('mainApp').classList.remove('hidden');
+            
+            // Carregar dados do cliente
+            loadClientData();
+            loadDashboardStats();
+        }
+        
+        // Carregar dados do cliente
+        function loadClientData() {
+            if (!currentUser) return;
+            
+            document.getElementById('clientName').textContent = currentUser.nome || '-';
+            document.getElementById('clientCnpj').textContent = formatCNPJ(currentUser.cnpj) || '-';
+            document.getElementById('clientEmail').textContent = currentUser.email || '-';
+            document.getElementById('clientContacts').textContent = currentUser.contatos || '-';
+            
+            const address = [
+                currentUser.endereco,
+                currentUser.numero ? `Nº ${currentUser.numero}` : '',
+                currentUser.complemento,
+                currentUser.cidade,
+                currentUser.uf
+            ].filter(Boolean).join(', ');
+            
+            document.getElementById('clientAddress').textContent = address || '-';
+            
+            // Avatar
+            const initials = currentUser.nome ? currentUser.nome.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'U';
+            document.getElementById('userInitials').textContent = initials;
+        }
+        
+        // Carregar estatísticas do dashboard
+        async function loadDashboardStats() {
+            if (!currentUser) return;
+            
+            try {
+                // Buscar contratos do cliente
+                const { data: contratos, error } = await supabase
+                    .from('contratos_itens')
+                    .select(`
+                        *,
+                        contratos_chaves (*)
+                    `)
+                    .eq('id_cliente', currentUser.id_cliente);
+                
+                if (error) throw error;
+                
+                let totalKeys = 0;
+                let activeKeys = 0;
+                let expiringSoon = 0;
+                
+                const now = new Date();
+                const thirtyDaysFromNow = new Date(now.getTime() + (30 * 24 * 60 * 60 * 1000));
+                
+                contratos.forEach(contrato => {
+                    if (contrato.contratos_chaves) {
+                        contrato.contratos_chaves.forEach(chave => {
+                            totalKeys++;
+                            
+                            if (chave.data_final) {
+                                const dataFinal = new Date(chave.data_final);
+                                if (dataFinal > now) {
+                                    activeKeys++;
+                                    if (dataFinal <= thirtyDaysFromNow) {
+                                        expiringSoon++;
+                                    }
+                                }
+                            }
+                        });
+                    }
+                });
+                
+                document.getElementById('totalKeys').textContent = totalKeys;
+                document.getElementById('activeKeys').textContent = activeKeys;
+                document.getElementById('expiringSoon').textContent = expiringSoon;
+                
+            } catch (error) {
+                console.error('Erro ao carregar estatísticas:', error);
+            }
+        }
+        
+        // Pesquisar chaves
+        async function handleSearch(e) {
+            e.preventDefault();
+            
+            const codigoAvlock = document.getElementById('codigoAvlock').value.trim();
+            const anoValue = document.getElementById('ano').value.trim();
+            const mesValue = document.getElementById('mes').value.trim();
+            
+            // Validar se pelo menos um critério foi informado
+            if (!codigoAvlock && !anoValue && !mesValue) {
+                showToast('Informe pelo menos um critério de pesquisa', 'error');
+                return;
+            }
+            
+            try {
+                // Construir query base
+                let query = supabase
+                    .from('contratos_chaves')
+                    .select(`
+                        *,
+                        contratos_itens!inner (
+                            sistema,
+                            observacoes,
+                            codigo_avlock,
+                            id_cliente
+                        )
+                    `)
+                    .eq('contratos_itens.id_cliente', currentUser.id_cliente);
+                
+                // Aplicar filtros condicionalmente
+                if (codigoAvlock) {
+                    query = query.eq('contratos_itens.codigo_avlock', codigoAvlock);
+                }
+                
+                if (anoValue) {
+                    const ano = parseInt(anoValue);
+                    if (!isNaN(ano)) {
+                        query = query.eq('ano_base', ano);
+                    }
+                }
+                
+                if (mesValue) {
+                    const mes = parseInt(mesValue);
+                    if (!isNaN(mes)) {
+                        query = query.eq('mes_base', mes);
+                    }
+                }
+                
+                const { data, error } = await query;
+                
+                if (error) throw error;
+                
+                displaySearchResults(data);
+                
+            } catch (error) {
+                console.error('Erro na pesquisa:', error);
+                showToast('Erro na pesquisa: ' + error.message, 'error');
+            }
+        }
+        
+        // Exibir resultados da pesquisa
+        function displaySearchResults(results) {
+            const container = document.getElementById('searchResults');
+            
+            if (!results || results.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center" style="padding: 3rem; color: var(--gray-500);">
+                        <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i>
+                        <p>Nenhum resultado encontrado para os critérios informados</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            const tableHTML = `
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Código AvLock</th>
+                                <th>Ano Base</th>
+                                <th>Mês Base</th>
+                                <th>Sistema</th>
+                                <th>Observações</th>
+                                <th>Chave AvLock</th>
+                                <th>Ações</th>
+                                <th>Data Inicial</th>
+                                <th>Data Final</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${results.map(item => `
+                                <tr>
+                                    <td>${item.contratos_itens.codigo_avlock}</td>
+                                    <td>${item.ano_base}</td>
+                                    <td>${getMonthName(item.mes_base)}</td>
+                                    <td>${item.contratos_itens.sistema}</td>
+                                    <td>${item.contratos_itens.observacoes || '-'}</td>
+                                    <td class="key-cell">
+                                        <code style="background: var(--gray-100); padding: 0.25rem 0.5rem; border-radius: 4px;">${item.chave_avlock}</code>
+                                    </td>
+                                    <td>
+                                        <button class="copy-btn" onclick="copyToClipboard('${item.chave_avlock}', this)" title="Copiar chave">
+                                            <i class="fas fa-copy"></i>
+                                        </button>
+                                    </td>
+                                    <td>${formatDate(item.data_inicial)}</td>
+                                    <td>${formatDate(item.data_final)}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            container.innerHTML = tableHTML;
+            
+            // Mostrar botão de exportar
+            document.getElementById('exportCsvBtn').style.display = 'inline-flex';
+            
+            // Armazenar dados para exportação
+            window.currentSearchResults = results;
+        }
+        
+        // Limpar pesquisa
+        function clearSearch() {
+            document.getElementById('searchForm').reset();
+            document.getElementById('ano').value = new Date().getFullYear();
+            
+            const container = document.getElementById('searchResults');
+            container.innerHTML = `
+                <div class="text-center" style="padding: 3rem; color: var(--gray-500);">
+                    <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i>
+                    <p>Utilize o formulário acima para pesquisar chaves de liberação</p>
+                </div>
+            `;
+            
+            // Esconder botão de exportar
+            document.getElementById('exportCsvBtn').style.display = 'none';
+            window.currentSearchResults = null;
+        }
+        
+        // Navegação entre páginas
+        function showPage(pageName) {
+            // Esconder todas as páginas
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // Mostrar página selecionada
+            document.getElementById(pageName + 'Page').classList.remove('hidden');
+            
+            // Atualizar navegação
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`[data-page="${pageName}"]`).classList.add('active');
+            
+            // Atualizar breadcrumb
+            const pageNames = {
+                'dashboard': 'Dashboard',
+                'search': 'Consultar Chaves'
+            };
+            document.getElementById('currentPage').textContent = pageNames[pageName] || pageName;
+        }
+        
+        // Toggle sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('collapsed');
+            isSidebarCollapsed = !isSidebarCollapsed;
+            
+            // Em mobile, toggle open/close
+            if (window.innerWidth <= 768) {
+                sidebar.classList.toggle('open');
+            }
+        }
+        
+        // Toggle theme
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+        
+        // Logout
+        function logout() {
+            localStorage.removeItem('currentUser');
+            currentUser = null;
+            
+            document.getElementById('mainApp').classList.add('hidden');
+            document.getElementById('loginPage').classList.remove('hidden');
+            
+            // Reset forms
+            document.getElementById('loginForm').reset();
+            document.getElementById('searchForm').reset();
+            
+            showToast('Logout realizado com sucesso!', 'success');
+        }
+        
+        // Loading state
+        function showLoading(show) {
+            const btnText = document.getElementById('loginBtnText');
+            const loading = document.getElementById('loginLoading');
+            
+            if (show) {
+                btnText.classList.add('hidden');
+                loading.classList.remove('hidden');
+            } else {
+                btnText.classList.remove('hidden');
+                loading.classList.add('hidden');
+            }
+        }
+        
+        // Toast notifications
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+                <span>${message}</span>
+            `;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => toast.classList.add('show'), 100);
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 3000);
+        }
+        
+        // Utility functions
+        function formatCNPJ(cnpj) {
+            if (!cnpj) return '';
+            return cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
+        }
+        
+        function formatDate(dateString) {
+            if (!dateString) return '-';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('pt-BR');
+        }
+        
+        function getMonthName(month) {
+            const months = [
+                '', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+                'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+            ];
+            return months[month] || month;
+        }
+        
+        // Responsive handling
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.getElementById('sidebar').classList.remove('open');
+            }
+        });
+        
+        // Copy to clipboard function
+        function copyToClipboard(text, button) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalIcon = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalIcon;
+                    button.classList.remove('copied');
+                }, 2000);
+                
+                showToast('Chave copiada para a área de transferência!', 'success');
+            }).catch(err => {
+                console.error('Erro ao copiar:', err);
+                showToast('Erro ao copiar chave', 'error');
+            });
+        }
+        
+        // Export to CSV function
+        function exportToCSV() {
+            if (!window.currentSearchResults || window.currentSearchResults.length === 0) {
+                showToast('Nenhum dado para exportar', 'error');
+                return;
+            }
+            
+            const headers = ['Código AvLock', 'Ano Base', 'Mês Base', 'Sistema', 'Observações', 'Chave AvLock', 'Data Inicial', 'Data Final'];
+            const csvContent = [
+                headers.join(','),
+                ...window.currentSearchResults.map(item => [
+                    item.contratos_itens.codigo_avlock,
+                    item.ano_base,
+                    getMonthName(item.mes_base),
+                    `"${item.contratos_itens.sistema}"`,
+                    `"${item.contratos_itens.observacoes || '-'}"`,
+                    item.chave_avlock,
+                    formatDate(item.data_inicial),
+                    formatDate(item.data_final)
+                ].join(','))
+            ].join('\n');
+            
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', `chaves_liberacao_${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            showToast('Arquivo CSV exportado com sucesso!', 'success');
+        }
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        }
+    </script>
+</body>
+</html>
