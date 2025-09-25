@@ -1007,6 +1007,9 @@
             document.getElementById('loginPage').classList.add('hidden');
             document.getElementById('mainApp').classList.remove('hidden');
             
+            // Limpar dados anteriores antes de carregar novos dados
+            clearAllUserData();
+            
             // Carregar dados do cliente
             loadClientData();
             loadDashboardStats();
@@ -1215,6 +1218,12 @@
             document.getElementById('searchForm').reset();
             document.getElementById('ano').value = new Date().getFullYear();
             
+            // Limpar resultados da pesquisa
+            clearSearchResults();
+        }
+        
+        // Função específica para limpar apenas os resultados da pesquisa
+        function clearSearchResults() {
             const container = document.getElementById('searchResults');
             container.innerHTML = `
                 <div class="text-center" style="padding: 3rem; color: var(--gray-500);">
@@ -1277,6 +1286,9 @@
             localStorage.removeItem('currentUser');
             currentUser = null;
             
+            // Limpar completamente todos os dados da sessão anterior
+            clearAllUserData();
+            
             document.getElementById('mainApp').classList.add('hidden');
             document.getElementById('loginPage').classList.remove('hidden');
             
@@ -1285,6 +1297,38 @@
             document.getElementById('searchForm').reset();
             
             showToast('Logout realizado com sucesso!', 'success');
+        }
+        
+        // Função para limpar todos os dados do usuário anterior
+        function clearAllUserData() {
+            // Limpar dados do cliente no dashboard
+            document.getElementById('clientName').textContent = '-';
+            document.getElementById('clientCnpj').textContent = '-';
+            document.getElementById('clientEmail').textContent = '-';
+            document.getElementById('clientContacts').textContent = '-';
+            document.getElementById('clientAddress').textContent = '-';
+            
+            // Resetar avatar para padrão
+            document.getElementById('userInitials').textContent = 'U';
+            
+            // Limpar estatísticas do dashboard
+            document.getElementById('totalKeys').textContent = '0';
+            document.getElementById('activeKeys').textContent = '0';
+            document.getElementById('expiringSoon').textContent = '0';
+            
+            // Limpar resultados da pesquisa de chaves
+            clearSearchResults();
+            
+            // Resetar formulário de pesquisa
+            document.getElementById('searchForm').reset();
+            document.getElementById('ano').value = new Date().getFullYear();
+            
+            // Voltar para a página dashboard
+            showPage('dashboard');
+            
+            // Limpar qualquer estado de sidebar colapsada em mobile
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.remove('open');
         }
         
         // Loading state
