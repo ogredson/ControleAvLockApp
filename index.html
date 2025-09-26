@@ -1234,6 +1234,24 @@
             }
         }
         
+        // Função para calcular dias úteis (segunda a sábado) de um mês
+        function calcularDiasUteis(ano, mes) {
+            const diasUteis = [];
+            const ultimoDia = new Date(ano, mes, 0).getDate(); // Último dia do mês
+            
+            for (let dia = 1; dia <= ultimoDia; dia++) {
+                const data = new Date(ano, mes - 1, dia); // mes - 1 porque Date usa 0-11 para meses
+                const diaSemana = data.getDay(); // 0 = domingo, 1 = segunda, ..., 6 = sábado
+                
+                // Incluir segunda (1) a sábado (6), excluir domingo (0)
+                if (diaSemana >= 1 && diaSemana <= 6) {
+                    diasUteis.push(dia);
+                }
+            }
+            
+            return diasUteis.length;
+        }
+        
         // Carregar estatísticas de atendimento
         async function loadAtendimentoStats() {
             if (!currentUser) return;
@@ -1278,14 +1296,30 @@
                 // Calcular estatísticas básicas
                 const totalAtendimentos = atendimentos.length;
                 
-                // Calcular média diária (últimos 30 dias)
-                const thirtyDaysAgo = new Date();
-                thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+                // Calcular média diária baseada nos dias úteis do período filtrado
+                let mediaDiaria = 0;
                 
-                const atendimentosRecentes = atendimentos.filter(a => 
-                    a.solicitado_em && new Date(a.solicitado_em) >= thirtyDaysAgo
-                );
-                const mediaDiaria = Math.round(atendimentosRecentes.length / 30 * 10) / 10;
+                if (anoSelecionado && mesSelecionado > 0) {
+                    // Calcular dias úteis do mês selecionado (segunda a sábado)
+                    const diasUteis = calcularDiasUteis(anoSelecionado, mesSelecionado);
+                    mediaDiaria = diasUteis > 0 ? Math.round(totalAtendimentos / diasUteis * 10) / 10 : 0;
+                } else if (anoSelecionado) {
+                    // Calcular dias úteis do ano selecionado
+                    let totalDiasUteis = 0;
+                    for (let mes = 1; mes <= 12; mes++) {
+                        totalDiasUteis += calcularDiasUteis(anoSelecionado, mes);
+                    }
+                    mediaDiaria = totalDiasUteis > 0 ? Math.round(totalAtendimentos / totalDiasUteis * 10) / 10 : 0;
+                } else {
+                    // Fallback: últimos 30 dias (comportamento original)
+                    const thirtyDaysAgo = new Date();
+                    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+                    
+                    const atendimentosRecentes = atendimentos.filter(a => 
+                        a.solicitado_em && new Date(a.solicitado_em) >= thirtyDaysAgo
+                    );
+                    mediaDiaria = Math.round(atendimentosRecentes.length / 30 * 10) / 10;
+                }
                 
                 // Calcular nota média
                 const atendimentosComNota = atendimentos.filter(a => a.nota_do_cliente && !isNaN(parseInt(a.nota_do_cliente)));
@@ -1385,24 +1419,50 @@
         // Gerar gráfico de atendimentos por período
         function generateAtendimentosPeriodoChart(atendimentos) {
             const periodoCount = {};
-            const hoje = new Date();
             
-            // Últimos 7 dias
-            for (let i = 6; i >= 0; i--) {
-                const data = new Date(hoje);
-                data.setDate(data.getDate() - i);
-                const dataStr = data.toISOString().split('T')[0];
-                periodoCount[dataStr] = 0;
-            }
+            // Obter filtros atuais
+            const filtroAno = document.getElementById('filtroAno');
+            const filtroMes = document.getElementById('filtroMes');
+            const anoSelecionado = filtroAno ? parseInt(filtroAno.value) : null;
+            const mesSelecionado = filtroMes ? parseInt(filtroMes.value) : null;
             
-            atendimentos.forEach(a => {
-                if (a.solicitado_em) {
-                    const dataAtendimento = new Date(a.solicitado_em).toISOString().split('T')[0];
-                    if (periodoCount.hasOwnProperty(dataAtendimento)) {
-                        periodoCount[dataAtendimento]++;
-                    }
+            // Se há filtros específicos, usar os dados filtrados
+            if (anoSelecionado && mesSelecionado > 0) {
+                // Agrupar por dia do mês selecionado
+                const diasDoMes = new Date(anoSelecionado, mesSelecionado, 0).getDate();
+                
+                for (let dia = 1; dia <= diasDoMes; dia++) {
+                    const dataStr = `${anoSelecionado}-${String(mesSelecionado).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
+                    periodoCount[dataStr] = 0;
                 }
-            });
+                
+                atendimentos.forEach(a => {
+                    if (a.solicitado_em) {
+                        const dataAtendimento = new Date(a.solicitado_em).toISOString().split('T')[0];
+                        if (periodoCount.hasOwnProperty(dataAtendimento)) {
+                            periodoCount[dataAtendimento]++;
+                        }
+                    }
+                });
+            } else {
+                // Comportamento padrão: últimos 7 dias
+                const hoje = new Date();
+                for (let i = 6; i >= 0; i--) {
+                    const data = new Date(hoje);
+                    data.setDate(data.getDate() - i);
+                    const dataStr = data.toISOString().split('T')[0];
+                    periodoCount[dataStr] = 0;
+                }
+                
+                atendimentos.forEach(a => {
+                    if (a.solicitado_em) {
+                        const dataAtendimento = new Date(a.solicitado_em).toISOString().split('T')[0];
+                        if (periodoCount.hasOwnProperty(dataAtendimento)) {
+                            periodoCount[dataAtendimento]++;
+                        }
+                    }
+                });
+            }
             
             const chartContainer = document.getElementById('atendimentosPeriodoChart');
             if (!chartContainer) {
@@ -1412,34 +1472,101 @@
             
             chartContainer.innerHTML = '';
             
-            const maxCount = Math.max(...Object.values(periodoCount), 1);
+            // Criar container para barras verticais
+            const chartWrapper = document.createElement('div');
+            chartWrapper.style.cssText = `
+                display: flex;
+                align-items: end;
+                justify-content: space-between;
+                height: 200px;
+                padding: 20px 10px;
+                border-bottom: 2px solid #e0e0e0;
+                position: relative;
+            `;
             
-            Object.entries(periodoCount).forEach(([data, count]) => {
-                const dataFormatada = new Date(data).toLocaleDateString('pt-BR', { 
+            const maxCount = Math.max(...Object.values(periodoCount), 1);
+            const totalEntries = Object.keys(periodoCount).length;
+            const barWidth = totalEntries > 10 ? '15px' : '30px';
+            
+            // Filtrar apenas dias com dados ou mostrar todos se for mês específico
+            const entriesToShow = anoSelecionado && mesSelecionado > 0 
+                ? Object.entries(periodoCount).filter(([data, count]) => count > 0)
+                : Object.entries(periodoCount);
+            
+            if (entriesToShow.length === 0) {
+                chartContainer.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">Nenhum atendimento encontrado no período selecionado</p>';
+                return;
+            }
+            
+            entriesToShow.forEach(([data, count]) => {
+                const dataFormatada = new Date(data + 'T00:00:00').toLocaleDateString('pt-BR', { 
                     day: '2-digit', 
                     month: '2-digit' 
                 });
                 
                 const barContainer = document.createElement('div');
-                barContainer.className = 'chart-bar-container';
-                barContainer.style.cssText = 'margin-bottom: 10px;';
-                
-                const label = document.createElement('div');
-                label.textContent = `${dataFormatada} (${count})`;
-                label.style.cssText = 'font-size: 12px; margin-bottom: 5px; color: #666;';
-                
-                const barBackground = document.createElement('div');
-                barBackground.style.cssText = 'background: #f0f0f0; height: 20px; border-radius: 10px; position: relative; overflow: hidden;';
+                barContainer.style.cssText = `
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin: 0 2px;
+                    min-width: ${barWidth};
+                `;
                 
                 const percentage = (count / maxCount) * 100;
-                const bar = document.createElement('div');
-                bar.style.cssText = `background: linear-gradient(45deg, #4facfe, #00f2fe); height: 100%; width: ${percentage}%; border-radius: 10px; transition: width 0.3s ease;`;
+                const barHeight = Math.max((percentage / 100) * 160, count > 0 ? 10 : 0);
                 
-                barBackground.appendChild(bar);
+                const bar = document.createElement('div');
+                bar.style.cssText = `
+                    background: linear-gradient(180deg, #4facfe, #00f2fe);
+                    width: ${barWidth};
+                    height: ${barHeight}px;
+                    border-radius: 4px 4px 0 0;
+                    transition: all 0.3s ease;
+                    position: relative;
+                    cursor: pointer;
+                `;
+                
+                // Tooltip com quantidade
+                if (count > 0) {
+                    const tooltip = document.createElement('div');
+                    tooltip.textContent = count;
+                    tooltip.style.cssText = `
+                        position: absolute;
+                        top: -25px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        background: #333;
+                        color: white;
+                        padding: 2px 6px;
+                        border-radius: 4px;
+                        font-size: 10px;
+                        opacity: 0;
+                        transition: opacity 0.3s ease;
+                    `;
+                    bar.appendChild(tooltip);
+                    
+                    bar.addEventListener('mouseenter', () => tooltip.style.opacity = '1');
+                    bar.addEventListener('mouseleave', () => tooltip.style.opacity = '0');
+                }
+                
+                const label = document.createElement('div');
+                label.textContent = dataFormatada;
+                label.style.cssText = `
+                    font-size: 10px;
+                    margin-top: 5px;
+                    color: #666;
+                    text-align: center;
+                    transform: rotate(-45deg);
+                    white-space: nowrap;
+                `;
+                
+                barContainer.appendChild(bar);
                 barContainer.appendChild(label);
-                barContainer.appendChild(barBackground);
-                chartContainer.appendChild(barContainer);
+                chartWrapper.appendChild(barContainer);
             });
+            
+            chartContainer.appendChild(chartWrapper);
         }
         
         // Exibir últimos atendimentos
