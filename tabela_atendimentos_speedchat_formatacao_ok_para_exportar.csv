@@ -1,0 +1,200 @@
+id_cliente,numero_do_atendimento,iniciado_por,finalizado_por,participantes,solicitado_em,iniciado_em,finalizado_em,observacao,nota_do_cliente,avaliacao_do_cliente,relato_do_operador,tipo_de_atendimento,tipo_de_fechamento
+4,11251,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-25 09:31:58,2025-09-25 09:31:58,2025-09-25 10:11:49,,,,"configuração das pastas schemas e xml_ws
+",Dificuldades Operacionais e Ajustes,Resolvido
+4,11241,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-24 16:14:38,2025-09-24 16:29:23,2025-09-24 18:09:38,,,,correção pastas xml e schemas,Dificuldades Operacionais e Ajustes,Resolvido
+4,11229,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-24 11:09:12,2025-09-24 11:11:52,2025-09-24 13:40:30,,,,configurado a pasta xml_ws nas cofigurações do programa,Dificuldades Operacionais e Ajustes,Resolvido
+4,11221,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-23 15:25:11,2025-09-23 15:49:14,2025-09-23 16:18:45,,,,,Avlock,Resolvido
+4,11204,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-23 08:43:25,2025-09-23 08:47:27,2025-09-23 09:21:01,,,,,Avlock,Resolvido
+4,11173,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-19 15:39:47,2025-09-19 15:40:29,2025-09-19 15:53:16,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+4,11148,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-19 08:26:28,2025-09-19 08:30:19,2025-09-19 11:51:56,,,,"mesmo ajustando os valores na tabela pedidos_pagtos, o sistema não tinha gerado as duplicatas no cr. após análise foi indicado que devesse cancelar o pedido em questão e fazer um novo pedido.",Dificuldades Operacionais e Ajustes,Resolvido
+4,11118,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-17 14:34:32,2025-09-17 14:35:25,2025-09-17 15:05:06,,,,817ALYM-G79PU5T-H7AN8UT-LV00XQJ,Avlock,Resolvido
+4,11068,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-15 09:10:27,2025-09-15 09:18:18,2025-09-15 11:04:27,,,,"ajustada numeração nfe, cancelada nfe 38802 que estava na sefaz e não no sistema.",Dificuldades Operacionais e Ajustes,Resolvido
+4,11049,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-12 13:04:31,2025-09-12 14:17:53,2025-09-12 17:26:25,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+4,11008,Luiz Ricardo,Rian Duarte,Luiz Ricardo - Rian Duarte,2025-09-11 08:47:31,2025-09-11 08:48:16,2025-09-11 09:42:54,,,,,Avlock,Resolvido
+4,10976,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-10 08:23:46,2025-09-10 08:28:45,2025-09-10 08:32:22,,,,,Avlock,Resolvido
+4,10967,Rian Duarte,Luiz Ricardo,Rian Duarte - Luiz Ricardo,2025-09-09 16:43:42,2025-09-09 16:54:21,2025-09-09 17:42:00,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+4,10898,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-04 16:16:16,2025-09-04 16:19:25,2025-09-04 16:28:00,,,,,Avlock,Resolvido
+4,10852,Luziara Lavor,Luziara Lavor,Luziara Lavor,2025-09-02 17:08:12,2025-09-02 17:18:17,2025-09-02 17:35:35,,,,,Avlock,Resolvido
+5,11100,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-17 09:01:39,2025-09-17 09:29:37,2025-09-17 10:52:54,,,,"explicado o processo de cancelamento do pagamento após a nfe ter sido cancelada.
+
+sac \ estorno de pagamento nfe",Dificuldades Operacionais e Ajustes,Resolvido
+5,10883,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-04 09:49:02,2025-09-04 09:55:18,2025-09-04 10:37:07,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+5,10801,Rian Duarte,Samuel Nojoza,Samuel Nojoza,2025-09-01 08:03:06,2025-09-01 08:05:32,2025-09-01 10:18:36,,,,"instalado fb 25 e configurado portas, ajustado inis nas estações e craido a rotina de backup para os dois bancos de dados",Relacionado a Banco de Dados,Resolvido
+6,11234,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-24 14:14:09,2025-09-24 15:47:21,2025-09-24 16:02:30,,,,,Avlock,Resolvido
+6,10806,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-01 08:34:42,2025-09-01 08:34:47,2025-09-01 08:34:48,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+6,10799,Rian Duarte,Luiz Ricardo,Rian Duarte - Luiz Ricardo,2025-09-01 07:30:57,2025-09-01 08:04:52,2025-09-01 08:34:32,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+9,10905,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-05 09:52:19,2025-09-05 09:55:32,2025-09-05 10:28:32,,,,,Avlock,Resolvido
+9,11129,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-18 07:39:48,2025-09-18 08:04:15,2025-09-18 08:07:47,,,,1ELD16V-EHCLM5K-F0AKKW3-QVM0P0G,Avlock,Resolvido
+9,11207,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-23 09:23:19,2025-09-23 09:24:56,2025-09-23 09:48:27,,5,,,Outros,Resolvido
+9,11053,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-12 15:41:02,2025-09-12 15:56:53,2025-09-12 17:54:34,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+9,10928,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-08 08:36:39,2025-09-08 08:54:47,2025-09-09 09:31:34,,,,,Outros,Resolvido
+9,10837,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-02 09:23:21,2025-09-02 09:26:09,2025-09-02 10:25:11,,,,,Outros,Resolvido
+9,11044,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-12 09:39:28,2025-09-12 09:40:14,2025-09-12 10:25:59,,,,,Instalação ou Reinstalação de Sistema ou afins,Resolvido
+9,10949,Rian Duarte,Luiz Ricardo,Rian Duarte - Luiz Ricardo,2025-09-09 08:52:46,2025-09-09 09:03:40,2025-09-09 15:29:15,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+9,10914,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-05 15:03:52,2025-09-05 15:54:18,2025-09-05 16:08:30,,,,instalada e testada a impressora cute pdf. fechando chamado,Dificuldades Operacionais e Ajustes,Resolvido
+9,10913,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-05 14:55:39,2025-09-05 14:56:01,2025-09-05 15:01:03,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+9,10906,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-05 10:11:09,2025-09-05 10:21:45,2025-09-05 11:58:57,,,,,Outros,Resolvido
+9,10811,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-01 10:48:36,2025-09-01 11:01:53,2025-09-01 11:17:52,,,,instalada impressora cute pdf. testado e está funcionando normalmente,Dificuldades Operacionais e Ajustes,Resolvido
+11,11062,Luziara Lavor,Luziara Lavor,Luziara Lavor,2025-09-15 07:50:02,2025-09-15 08:15:01,2025-09-15 08:43:59,,4,,,Avlock,Resolvido
+11,11026,Connect Soft,Connect Soft,Connect Soft,2025-09-11 14:23:37,2025-09-11 14:39:19,2025-09-11 15:01:00,,4,,certificado,Dificuldades Operacionais e Ajustes,Resolvido
+11,10958,Izaias Pereira,Luiz Ricardo,Izaias Pereira - Luiz Ricardo,2025-09-09 12:41:52,2025-09-09 12:46:30,2025-09-09 14:27:08,,,,,Avlock,Resolvido
+11,10936,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-08 11:05:01,2025-09-08 11:09:03,2025-09-08 11:09:48,,,,,Avlock,Resolvido
+11,10880,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-04 08:41:56,2025-09-04 08:45:14,2025-09-04 10:10:42,,4,,,Dificuldades Operacionais e Ajustes,Resolvido
+11,10828,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-02 06:31:27,2025-09-02 08:05:59,2025-09-02 08:17:57,,,,,Avlock,Resolvido
+11,11211,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-23 09:56:19,2025-09-23 09:56:50,2025-09-23 10:00:56,,5,,,Avlock,Resolvido
+11,11205,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-23 08:54:29,2025-09-23 08:55:03,2025-09-23 09:21:54,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+11,11203,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-23 08:35:11,2025-09-23 08:37:57,2025-09-23 08:49:54,,,,LZQD9MV-6R312VP-K51EA1X-CHLRZYD,Avlock,Resolvido
+11,10934,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-08 11:00:58,2025-09-08 11:09:00,2025-09-08 13:05:57,,,,,Avlock,Resolvido
+13,11223,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-24 09:01:08,2025-09-24 09:03:38,2025-09-24 09:05:38,,,,W5QD20C-M30DED0-KZANFT0-M350Y74,Avlock,Resolvido
+13,11216,Izaias Pereira,Luiz Ricardo,Izaias Pereira - Luiz Ricardo,2025-09-23 11:55:39,2025-09-23 13:21:52,2025-09-23 14:50:04,,,,,Avlock,Resolvido
+13,11171,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-19 15:27:01,2025-09-19 15:28:46,2025-09-19 15:37:53,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,11159,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-19 11:29:11,2025-09-19 11:42:36,2025-09-19 14:35:52,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,11154,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-19 10:50:53,2025-09-19 10:52:12,2025-09-19 10:56:49,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,11091,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-16 14:34:10,2025-09-16 15:32:06,2025-09-16 16:45:29,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,11074,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-15 13:49:20,2025-09-15 14:18:24,2025-09-15 14:51:05,,,,"devido ao problema ocasionado na sexta, o pedido em questão não consta no banco de dados. foi removida a reserva para o produtos em questão e ajustado o estoque. 
+
+select * from pedidos where numero = 653525
+
+select * from pedidos where id = 976995
+
+não retornou informações, assim foi ajustada a estoq_reserv e produtos_estoque e produtos
+
+",Relacionado a Banco de Dados,Resolvido
+13,11061,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-13 13:30:53,2025-09-13 13:32:47,2025-09-13 13:32:49,,,,,Outros,Resolvido
+13,11056,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-13 09:09:40,2025-09-13 09:13:42,2025-09-13 13:29:42,,,,,Outros,Não Resolvido
+13,11042,Rian Duarte,Rian Duarte,Rian Duarte - Luiz Ricardo,2025-09-12 09:14:56,2025-09-12 09:17:48,2025-09-13 08:49:33,,,,,Outros,Resolvido
+13,11007,Luiz Ricardo,Rian Duarte,Luiz Ricardo - Rian Duarte,2025-09-11 08:39:50,2025-09-11 08:40:44,2025-09-11 09:40:37,,,,,Avlock,Resolvido
+13,11002,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-10 17:31:24,2025-09-10 17:31:34,2025-09-10 17:31:35,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,10978,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-10 08:52:17,2025-09-10 08:56:24,2025-09-10 17:31:16,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,10960,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-09 13:29:06,2025-09-09 14:11:52,2025-09-09 14:55:23,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,10925,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-08 07:59:57,2025-09-08 08:02:54,2025-09-08 08:19:36,,,,,Outros,Resolvido
+13,10921,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-06 11:36:17,2025-09-06 11:39:20,2025-09-06 11:48:25,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,10851,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-02 14:58:30,2025-09-02 15:12:08,2025-09-02 16:53:29,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,10842,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-02 11:04:51,2025-09-02 11:07:49,2025-09-02 14:56:21,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,10836,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-02 09:20:42,2025-09-02 09:21:17,2025-09-02 10:16:06,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,10810,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-01 10:18:24,2025-09-01 10:44:22,2025-09-01 11:17:00,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,10804,Rian Duarte,Luiz Ricardo,Rian Duarte - Luiz Ricardo,2025-09-01 08:12:35,2025-09-01 08:17:59,2025-09-01 09:21:03,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,11255,Izaias Pereira,Samuel Nojoza,Samuel Nojoza,2025-09-25 11:01:50,2025-09-25 11:20:02,2025-09-25 12:42:33,,,,vrificado que dentro do xml o cep estava errado,Dificuldades Operacionais e Ajustes,Resolvido
+13,11151,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-19 10:06:40,2025-09-19 10:59:50,2025-09-19 15:16:15,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,11122,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-17 15:24:52,2025-09-17 15:34:28,2025-09-17 15:46:17,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,11106,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-17 10:40:40,2025-09-17 11:00:54,2025-09-17 12:06:42,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,11098,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-17 08:31:26,2025-09-17 08:46:44,2025-09-17 10:39:46,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,11076,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-15 14:33:31,2025-09-15 14:42:31,2025-09-15 14:45:25,,,,87ZD321-QCQ73FW-HY8UTVH-6PH0GAR,Avlock,Resolvido
+13,11064,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-15 08:32:21,2025-09-15 08:36:59,2025-09-15 11:51:19,,,,,Outros,Resolvido
+13,11038,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-12 08:25:40,2025-09-12 08:28:08,2025-09-12 09:19:59,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,11029,Connect Soft,Luiz Ricardo,Rian Duarte - Luiz Ricardo,2025-09-11 15:43:33,2025-09-11 16:45:26,2025-09-12 08:03:46,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,10999,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-10 15:44:44,2025-09-10 17:23:58,2025-09-10 17:43:01,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,10995,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-10 15:27:25,2025-09-10 15:29:07,2025-09-10 15:42:38,,,,feche o programa PEDIDOS em TODAS as estações e depois acesse o programa e tente emitir o dav em questão,Dificuldades Operacionais e Ajustes,Resolvido
+13,11079,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-16 08:18:47,2025-09-16 08:18:47,2025-09-16 09:18:14,,,,realizado um update no produto 00588132 onde ajustava o campo NPERCCUSTOADIC = 0. após o update o cliente lançou a nfe de compra normalmente.,Relacionado a Banco de Dados,Resolvido
+13,11140,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-18 15:18:52,2025-09-18 15:22:17,2025-09-18 15:35:41,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,11109,Rian Duarte,Luiz Ricardo,Luiz Ricardo,2025-09-17 11:06:27,2025-09-17 11:17:38,2025-09-17 15:36:42,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,11165,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-19 13:45:19,2025-09-19 14:44:22,2025-09-19 14:44:39,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,11132,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-18 08:49:54,2025-09-18 08:51:59,2025-09-18 12:07:05,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,11096,Rian Duarte,Luiz Ricardo,Rian Duarte - Luiz Ricardo,2025-09-17 08:15:45,2025-09-17 08:38:06,2025-09-17 16:23:08,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,11066,Luziara Lavor,Luziara Lavor,Luziara Lavor,2025-09-15 08:50:45,2025-09-15 09:07:48,2025-09-15 09:33:03,,,,,Avlock,Resolvido
+13,11025,Rian Duarte,Luiz Ricardo,Rian Duarte - Luiz Ricardo,2025-09-11 14:12:21,2025-09-11 14:23:22,2025-09-11 15:40:11,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,11018,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-11 11:13:14,2025-09-11 11:49:09,2025-09-11 13:43:20,,,,,Outros,Inatividade do Cliente
+13,10961,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-09 14:32:42,2025-09-09 14:33:20,2025-09-09 15:35:35,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,10956,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-09 11:36:17,2025-09-09 11:37:23,2025-09-09 12:25:40,,,,,Instalação ou Reinstalação de Sistema ou afins,Resolvido
+13,11101,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-17 09:02:40,2025-09-17 09:11:13,2025-09-17 10:25:00,,,,,Instalação ou Reinstalação de Sistema ou afins,Resolvido
+13,10996,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-10 15:31:15,2025-09-10 15:39:37,2025-09-10 16:58:49,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,10985,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-10 11:49:13,2025-09-10 11:49:52,2025-09-10 12:01:24,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,10871,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-03 13:13:06,2025-09-03 13:33:14,2025-09-03 14:02:02,,,,isntalado um atalho para a flilial de paracuru. testado e está funcionando normalmente,Dificuldades Operacionais e Ajustes,Resolvido
+13,11103,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-17 09:16:57,2025-09-17 09:17:53,2025-09-17 10:12:53,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,11057,Rian Duarte,Samuel Nojoza,Samuel Nojoza,2025-09-13 09:21:52,2025-09-13 10:02:21,2025-09-15 15:24:04,,,,foi criado pendência e ticket no trello enviado para programação.,Outros,Não Resolvido
+13,11021,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-11 13:08:49,2025-09-11 13:53:38,2025-09-11 14:18:42,,,,emovido certificado digital vencido e ajustado o certificado válido.,Dificuldades Operacionais e Ajustes,Resolvido
+13,10977,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-10 08:44:08,2025-09-10 08:55:52,2025-09-10 08:55:54,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,11063,Luziara Lavor,Luziara Lavor,Luziara Lavor,2025-09-15 07:59:45,2025-09-15 08:14:38,2025-09-15 09:31:51,"Anydesk 
+1123038233
+",,,,Avlock,Resolvido
+26,10988,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-10 13:10:17,2025-09-10 13:39:59,2025-09-10 13:45:28,"Anydesk 
+1123038233
+",,,,Avlock,Resolvido
+26,10937,Rian Duarte,Luiz Ricardo,Rian Duarte - Luiz Ricardo,2025-09-08 11:52:26,2025-09-08 13:07:12,2025-09-08 17:14:53,"Anydesk 
+1123038233
+",,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,10821,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-01 14:29:40,2025-09-01 14:31:36,2025-09-01 14:43:32,"Anydesk 
+1123038233
+",,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,11194,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-22 10:53:11,2025-09-22 10:54:25,2025-09-22 11:07:16,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,10993,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-10 14:39:41,2025-09-10 14:44:07,2025-09-10 14:57:48,,,,,Avlock,Resolvido
+26,11259,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-25 11:31:45,2025-09-25 13:40:25,2025-09-25 16:07:09,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,11245,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-24 19:16:37,2025-09-24 19:55:13,2025-09-24 19:55:15,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,11126,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-17 15:44:52,2025-09-17 15:45:26,2025-09-17 16:47:08,,,,enviado imagem que mostra o local onde pode ser lançada a nfe de serviços tomados,Dificuldades Operacionais e Ajustes,Resolvido
+26,11120,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-17 15:02:42,2025-09-17 15:19:47,2025-09-17 15:35:26,,,,,Outros,Inatividade do Cliente
+26,11093,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-16 16:09:35,2025-09-16 16:23:48,2025-09-16 16:27:48,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,11092,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-16 15:23:06,2025-09-16 15:31:25,2025-09-16 16:02:14,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,11033,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-11 17:45:50,2025-09-11 17:52:17,2025-09-11 17:53:15,,,,cliente reabriu o chamado ao dar boa tarde. rs,Outros,Resolvido
+26,11019,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-11 11:50:39,2025-09-11 13:44:44,2025-09-11 17:23:09,,,,removido certificado vencido e registrado certificado novo. testado e está comunicando com a sefaz.,Dificuldades Operacionais e Ajustes,Resolvido
+26,10900,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-04 16:28:34,2025-09-04 16:35:18,2025-09-04 17:08:23,,,,com informações enviadas pela contabilidade foi emitida a nfe de devolução para uma nfce emitoda para prefeitura,Dificuldades Operacionais e Ajustes,Resolvido
+26,10882,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-04 09:13:30,2025-09-04 09:25:22,2025-09-04 09:41:57,,,,,Outros,Resolvido
+26,10879,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-04 08:38:29,2025-09-04 08:39:00,2025-09-04 09:13:15,,,,,Outros,Resolvido
+26,10865,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-03 10:47:31,2025-09-03 10:56:39,2025-09-03 11:56:14,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,11237,Izaias Pereira,Luiz Ricardo,Izaias Pereira - Luiz Ricardo,2025-09-24 15:03:48,2025-09-24 15:53:37,2025-09-24 19:55:30,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,10854,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-03 07:59:00,2025-09-03 08:06:46,2025-09-03 08:37:12,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,11254,Luiz Ricardo,Rian Duarte,Rian Duarte,2025-09-25 10:31:45,2025-09-25 10:42:14,2025-09-25 11:08:13,,,,,Outros,Resolvido
+26,11247,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-25 08:00:17,2025-09-25 08:02:00,2025-09-25 08:56:16,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,11243,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-24 16:35:41,2025-09-24 19:54:58,2025-09-24 19:55:01,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,11201,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-22 16:03:09,2025-09-22 16:33:04,2025-09-22 18:15:25,,,,docker reiniciado e rabbitmq reiniciado o serviço,Relacionado a Banco de Dados,Resolvido
+26,11176,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-19 15:55:22,2025-09-19 16:46:51,2025-09-19 18:16:42,,,,"cliente vai fazer uma nova cotação
+",Dificuldades Operacionais e Ajustes,Resolvido
+26,11158,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-19 11:15:35,2025-09-19 11:35:16,2025-09-19 11:35:16,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,11083,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-16 10:31:17,2025-09-16 10:51:28,2025-09-16 16:34:01,,,,explicado o processo correto para lançamento de nfe de ativo imobilizado.,Dificuldades Operacionais e Ajustes,Resolvido
+26,11058,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-13 09:25:03,2025-09-13 09:48:49,2025-09-13 11:28:46,,,,,Outros,Resolvido
+26,11022,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-11 13:11:23,2025-09-11 14:05:29,2025-09-11 14:41:23,,,,,Outros,Resolvido
+26,11017,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-11 11:12:54,2025-09-11 11:13:55,2025-09-11 11:24:52,,,,, Erros no Sistema e Bugs,Inatividade do Cliente
+26,11010,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-11 09:15:14,2025-09-11 09:16:35,2025-09-11 09:33:49,,,,"após análise da programação, devido a finalização incorreta do pedido de compra, será necessário refazer o pedido de compra 394, ou seja, tem que fazer um novo pedido de compra",Dificuldades Operacionais e Ajustes,Resolvido
+26,10998,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-10 15:44:11,2025-09-10 16:12:25,2025-09-10 18:01:51,,,,postergado o atendimento,Relacionado a Banco de Dados,Não Resolvido
+26,10986,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-10 13:05:44,2025-09-10 13:51:20,2025-09-10 15:01:39,,,,ajustado tamanho do campo observação na tabela de cotação,Relacionado a Banco de Dados,Resolvido
+26,10919,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-06 10:49:06,2025-09-06 10:49:54,2025-09-06 11:13:17,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,10915,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-05 15:39:52,2025-09-05 15:54:27,2025-09-05 18:28:55,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,10878,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-04 08:21:18,2025-09-04 08:24:25,2025-09-04 10:46:45,,,,,Outros,Resolvido
+26,10869,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-03 12:05:04,2025-09-03 13:18:54,2025-09-03 14:01:10,,,,,Outros,Inatividade do Cliente
+26,10868,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-03 11:16:24,2025-09-03 11:37:28,2025-09-03 12:00:22,,,,,Outros,Inatividade do Cliente
+26,11141,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-18 15:34:36,2025-09-18 16:00:13,2025-09-18 17:59:55,,,,"pego banco, criado uma ""filial jfreitas"" no micro do valmir. alterado os pedidos de compra existentes para cancelados.",Relacionado a Banco de Dados,Resolvido
+26,11138,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-18 12:13:37,2025-09-18 13:32:48,2025-09-18 14:26:39,,,,enviado as telas para configuração das informações que o cliente precisa.,Dificuldades Operacionais e Ajustes,Resolvido
+26,11246,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-25 07:49:19,2025-09-25 08:01:48,2025-09-25 10:08:52,,,,,Outros,Resolvido
+26,11244,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-24 17:46:20,2025-09-24 19:54:31,2025-09-24 19:54:44,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,11242,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-24 16:26:00,2025-09-24 16:57:59,2025-09-24 17:28:13,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,11240,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-24 15:58:05,2025-09-24 16:20:37,2025-09-24 16:25:21,,,,,Outros,Inatividade do Cliente
+26,11239,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-24 15:31:25,2025-09-24 15:36:46,2025-09-24 15:57:44,,,,,Outros,Inatividade do Cliente
+26,11231,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-24 13:23:38,2025-09-24 13:39:50,2025-09-24 14:01:04,,,,verificado e constatatdo que o certificado do cliente estava vencido,Dificuldades Operacionais e Ajustes,Resolvido
+26,11143,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-18 16:16:45,2025-09-18 18:00:42,2025-09-18 18:01:32,,,,,Outros,Não Resolvido
+26,11089,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-16 13:56:02,2025-09-16 14:11:11,2025-09-16 15:30:00,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,11060,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-13 13:14:05,2025-09-15 08:23:36,2025-09-15 11:32:50,,,,,Outros,Resolvido
+26,10889,Izaias Pereira,Luiz Ricardo,Izaias Pereira - Luiz Ricardo,2025-09-04 11:09:33,2025-09-04 12:51:43,2025-09-04 14:44:27,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,10830,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-02 08:07:45,2025-09-02 08:08:14,2025-09-02 08:44:33,,,,,Outros,Inatividade do Cliente
+26,11193,Luziara Lavor,Luziara Lavor,Luziara Lavor,2025-09-22 09:47:26,2025-09-22 09:50:05,2025-09-22 09:53:01,,,,,Avlock,Resolvido
+26,11131,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-18 08:31:23,2025-09-18 08:33:07,2025-09-18 09:16:42,,,,chave de acesso e instalação do atalho para sistema da filial piripiri,Dificuldades Operacionais e Ajustes,Resolvido
+26,11228,Rian Duarte,Luiz Ricardo,Rian Duarte - Luiz Ricardo,2025-09-24 10:56:57,2025-09-24 11:29:58,2025-09-24 19:54:14,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,11202,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-22 17:21:32,2025-09-22 17:40:18,2025-09-22 17:43:43,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,11192,Luziara Lavor,Luziara Lavor,Luziara Lavor,2025-09-22 09:47:02,2025-09-22 09:49:47,2025-09-22 10:01:03,,,,,Avlock,Resolvido
+26,11134,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-18 09:56:10,2025-09-18 10:01:25,2025-09-18 12:00:50,,,,"após as informações sobre cfop e tipo de nota, a nota de DEVOLUÇÃO DE ATIVO IMOBILIZADO foi emitida com sucesso",Dificuldades Operacionais e Ajustes,Resolvido
+26,11125,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-17 15:40:01,2025-09-17 15:40:38,2025-09-17 15:44:45,,,," informação contábil, assim, deve entrar em contato com a empresa que presta serviços contábeis e deve verificar com eles a informação.",Outros,Resolvido
+26,11119,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-17 14:45:45,2025-09-17 15:01:29,2025-09-17 15:01:30,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,11094,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-16 16:12:52,2025-09-16 16:13:21,2025-09-16 16:35:28,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,10963,Rian Duarte,Luiz Ricardo,Rian Duarte - Luiz Ricardo,2025-09-09 15:39:50,2025-09-09 15:40:34,2025-09-09 16:06:19,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,10902,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-05 08:53:33,2025-09-05 09:18:16,2025-09-05 09:21:10,,,,,Outros,Resolvido
+26,10862,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-03 10:07:23,2025-09-03 10:33:43,2025-09-03 11:44:02,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+27,11181,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-19 16:29:47,2025-09-19 16:30:01,2025-09-19 16:48:38,,,,alterado o status do dav 1303 para P e baixado no caixa. ,Relacionado a Banco de Dados,Resolvido
+27,11178,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-19 16:06:54,2025-09-19 16:13:24,2025-09-19 16:28:21,,,,abriram o mesmo chamado,Outros,Resolvido
+27,11102,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-17 09:05:17,2025-09-17 09:05:24,2025-09-17 15:18:29,,,,cliente vai lançar a nota de importação como sendo a própria emitente,Dificuldades Operacionais e Ajustes,Resolvido
+27,10954,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-09 11:07:41,2025-09-09 11:19:59,2025-09-09 12:05:58,,5,rapido e preciso .. igual a Tramontina !!,ajudado cliente a cancelar o dav e refazer o mesmo. fechando chamado,Dificuldades Operacionais e Ajustes,Resolvido
+27,10907,Rian Duarte,Luiz Ricardo,Rian Duarte - Luiz Ricardo,2025-09-05 11:56:59,2025-09-05 13:10:28,2025-09-05 18:29:16,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+27,10904,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-05 09:13:19,2025-09-05 09:17:23,2025-09-05 11:52:28,,,,, Erros no Sistema e Bugs,Resolvido
+27,10888,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-04 10:56:08,2025-09-04 11:02:21,2025-09-04 14:03:40,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+33,11222,Rian Duarte,Rian Duarte,Rian Duarte,2025-09-24 08:58:08,2025-09-24 08:58:26,2025-09-24 09:29:38,,,,,Avlock,Resolvido
+33,11191,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-22 09:41:30,2025-09-22 09:41:30,2025-09-22 14:38:52,,,,,Outros,Resolvido
+33,11136,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-18 11:23:16,2025-09-18 14:11:55,2025-09-18 14:11:57,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+33,11112,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-17 11:21:45,2025-09-17 11:25:54,2025-09-17 14:36:42,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+33,11065,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-15 08:45:01,2025-09-15 08:45:01,2025-09-16 08:09:03,,,,em análise , Erros no Sistema e Bugs,Não Resolvido
+33,11052,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,2025-09-12 14:47:46,2025-09-12 17:25:58,2025-09-12 17:28:41,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+33,11039,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-12 08:27:27,2025-09-12 08:27:27,2025-09-12 12:27:50,,,,analisando reservado em laboratório.,Relacionado a Banco de Dados,Resolvido
+33,11011,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-11 09:23:00,2025-09-11 09:32:36,2025-09-11 17:52:01,,,,ainda em análise,Relacionado a Banco de Dados,Resolvido
+33,10975,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-10 08:21:55,2025-09-10 08:21:55,2025-09-10 14:18:04,,,,análise de reservados,Relacionado a Banco de Dados,Resolvido
+33,10947,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-09 08:42:49,2025-09-09 09:05:37,2025-09-09 11:29:28,,,,reagendado análise para 10/09/2025,Dificuldades Operacionais e Ajustes,Resolvido
+33,10938,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-08 13:46:32,2025-09-08 14:05:32,2025-09-08 15:11:26,,,,A29DVW0-G4RYMT0-F4T6EDP-Y3LRNUZ,Avlock,Resolvido
+33,10927,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-08 08:36:19,2025-09-08 08:36:19,2025-09-08 13:04:38,,,,reagendou,Outros,Inatividade do Cliente
+33,10916,Luiz Ricardo,Samuel Nojoza,Samuel Nojoza,2025-09-05 15:50:35,2025-09-05 15:59:23,2025-09-05 17:35:14,,,,cliente postergou o treinamento para faturamento das OS baixadas no caixa,Dificuldades Operacionais e Ajustes,Resolvido
+33,10893,Rian Duarte,Luiz Ricardo,Rian Duarte - Luiz Ricardo,2025-09-04 12:03:29,2025-09-04 12:08:08,2025-09-04 15:58:06,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+33,10803,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,2025-09-01 08:10:52,2025-09-01 08:10:52,2025-09-01 14:27:42,,,,copiado banco de dados para análise,Relacionado a Banco de Dados,Resolvido

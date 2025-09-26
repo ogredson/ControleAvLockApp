@@ -708,10 +708,9 @@
                 
                 <div class="nav-group">
                     <div class="nav-group-title">Estatísticas</div>
-                    <a href="#" class="nav-item">
+                    <a href="#" class="nav-item" onclick="showStatisticsPage()">
                         <i class="nav-icon fas fa-chart-bar"></i>
                         <span class="nav-text">Estatísticas</span>
-                        <span class="nav-badge">3</span>
                     </a>
                 </div>
                 
@@ -925,6 +924,134 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Statistics Page -->
+                <div id="statisticsPage" class="page hidden">
+                    <!-- Statistics Header -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-chart-line"></i>
+                                Estatísticas de Atendimento
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <p style="color: var(--gray-600); margin: 0; margin-bottom: 1.5rem;">
+                                Visualize as estatísticas detalhadas dos atendimentos realizados para sua empresa.
+                            </p>
+                            
+                            <!-- Filtros de Período -->
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label" for="filtroAno">Ano</label>
+                                    <select id="filtroAno" class="form-input" onchange="loadAtendimentoStats()">
+                                        <!-- Opções serão preenchidas via JavaScript -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="filtroMes">Mês</label>
+                                    <select id="filtroMes" class="form-input" onchange="loadAtendimentoStats()">
+                                        <option value="">Todos os meses</option>
+                                        <option value="1">Janeiro</option>
+                                        <option value="2">Fevereiro</option>
+                                        <option value="3">Março</option>
+                                        <option value="4">Abril</option>
+                                        <option value="5">Maio</option>
+                                        <option value="6">Junho</option>
+                                        <option value="7">Julho</option>
+                                        <option value="8">Agosto</option>
+                                        <option value="9">Setembro</option>
+                                        <option value="10">Outubro</option>
+                                        <option value="11">Novembro</option>
+                                        <option value="12">Dezembro</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats Cards -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-headset" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                                <h3 style="font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem;" id="totalAtendimentos">0</h3>
+                                <p style="color: var(--gray-500);">Total de Atendimentos</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-calendar-day" style="font-size: 2rem; color: var(--success-color); margin-bottom: 1rem;"></i>
+                                <h3 style="font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem;" id="mediaDiaria">0</h3>
+                                <p style="color: var(--gray-500);">Média Diária</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-star" style="font-size: 2rem; color: var(--warning-color); margin-bottom: 1rem;"></i>
+                                <h3 style="font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem;" id="notaMedia">0</h3>
+                                <p style="color: var(--gray-500);">Nota Média</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <i class="fas fa-clock" style="font-size: 2rem; color: var(--info-color); margin-bottom: 1rem;"></i>
+                                <h3 style="font-size: 2rem; font-weight: 600; margin-bottom: 0.5rem;" id="tempoMedio">0h</h3>
+                                <p style="color: var(--gray-500);">Tempo Médio</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Row -->
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem;">
+                        <!-- Tipos de Atendimento Chart -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <i class="fas fa-chart-pie"></i>
+                                    Tipos de Atendimento
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div id="tiposAtendimentoChart"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Atendimentos por Período -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-chart-line"></i>
+                                Atendimentos por Período
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="atendimentosPeriodoChart"></div>
+                        </div>
+                    </div>
+
+                    <!-- Detalhes dos Atendimentos -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-list-alt"></i>
+                                Últimos Atendimentos
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="ultimosAtendimentos">
+                                <div class="text-center" style="padding: 3rem; color: var(--gray-500);">
+                                    <i class="fas fa-headset" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i>
+                                    <p>Carregando dados dos atendimentos...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
@@ -1100,6 +1227,263 @@
             }
         }
         
+        // Carregar estatísticas de atendimento
+        async function loadAtendimentoStats() {
+            if (!currentUser) return;
+            
+            try {
+                // Obter valores dos filtros
+                const filtroAno = document.getElementById('filtroAno');
+                const filtroMes = document.getElementById('filtroMes');
+                
+                const anoSelecionado = filtroAno ? parseInt(filtroAno.value) : null;
+                const mesSelecionado = filtroMes ? parseInt(filtroMes.value) : null;
+                
+                // Buscar atendimentos do cliente
+                let query = supabase
+                    .from('clientes_atendimentos')
+                    .select('*')
+                    .eq('id_cliente', currentUser.id_cliente);
+                
+                // Aplicar filtros de período baseado no campo 'solicitado_em'
+                if (anoSelecionado && mesSelecionado > 0) {
+                    // Filtrar por ano e mês específicos
+                    const inicioMes = new Date(anoSelecionado, mesSelecionado - 1, 1);
+                    const fimMes = new Date(anoSelecionado, mesSelecionado, 0, 23, 59, 59);
+                    
+                    query = query
+                        .gte('solicitado_em', inicioMes.toISOString())
+                        .lte('solicitado_em', fimMes.toISOString());
+                } else if (anoSelecionado) {
+                    // Filtrar apenas por ano
+                    const inicioAno = new Date(anoSelecionado, 0, 1);
+                    const fimAno = new Date(anoSelecionado, 11, 31, 23, 59, 59);
+                    
+                    query = query
+                        .gte('solicitado_em', inicioAno.toISOString())
+                        .lte('solicitado_em', fimAno.toISOString());
+                }
+                
+                const { data: atendimentos, error } = await query.order('solicitado_em', { ascending: false });
+                
+                if (error) throw error;
+                
+                // Calcular estatísticas básicas
+                const totalAtendimentos = atendimentos.length;
+                
+                // Calcular média diária (últimos 30 dias)
+                const thirtyDaysAgo = new Date();
+                thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+                
+                const atendimentosRecentes = atendimentos.filter(a => 
+                    a.solicitado_em && new Date(a.solicitado_em) >= thirtyDaysAgo
+                );
+                const mediaDiaria = Math.round(atendimentosRecentes.length / 30 * 10) / 10;
+                
+                // Calcular nota média
+                const atendimentosComNota = atendimentos.filter(a => a.nota_do_cliente && !isNaN(parseInt(a.nota_do_cliente)));
+                const somaNotas = atendimentosComNota.reduce((sum, a) => sum + parseInt(a.nota_do_cliente), 0);
+                const notaMedia = atendimentosComNota.length > 0 ? (somaNotas / atendimentosComNota.length).toFixed(1) : 0;
+                
+                // Calcular tempo médio de atendimento
+                const atendimentosFinalizados = atendimentos.filter(a => a.iniciado_em && a.finalizado_em);
+                let tempoMedioMinutos = 0;
+                
+                if (atendimentosFinalizados.length > 0) {
+                    const tempoTotal = atendimentosFinalizados.reduce((total, a) => {
+                        const inicio = new Date(a.iniciado_em);
+                        const fim = new Date(a.finalizado_em);
+                        return total + (fim - inicio);
+                    }, 0);
+                    tempoMedioMinutos = Math.round(tempoTotal / atendimentosFinalizados.length / (1000 * 60));
+                }
+                
+                const tempoMedioFormatado = tempoMedioMinutos >= 60 
+                    ? `${Math.floor(tempoMedioMinutos / 60)}h ${tempoMedioMinutos % 60}m`
+                    : `${tempoMedioMinutos}m`;
+                
+                // Atualizar elementos da interface
+                document.getElementById('totalAtendimentos').textContent = totalAtendimentos;
+                document.getElementById('mediaDiaria').textContent = mediaDiaria;
+                document.getElementById('notaMedia').textContent = notaMedia;
+                document.getElementById('tempoMedio').textContent = tempoMedioFormatado;
+                
+                // Gerar gráficos
+                generateTiposAtendimentoChart(atendimentos);
+                generateAtendimentosPeriodoChart(atendimentos);
+                
+                // Mostrar últimos atendimentos
+                displayUltimosAtendimentos(atendimentos.slice(0, 10));
+                
+            } catch (error) {
+                console.error('Erro ao carregar estatísticas de atendimento:', error);
+                showToast('Erro ao carregar estatísticas de atendimento', 'error');
+            }
+        }
+        
+        // Gerar gráfico de tipos de atendimento
+        function generateTiposAtendimentoChart(atendimentos) {
+            const tiposCount = {};
+            
+            atendimentos.forEach(a => {
+                const tipo = a.tipo_de_atendimento || 'Não especificado';
+                tiposCount[tipo] = (tiposCount[tipo] || 0) + 1;
+            });
+            
+            const chartContainer = document.getElementById('tiposAtendimentoChart');
+            if (!chartContainer) {
+                console.error('Container tiposAtendimentoChart não encontrado');
+                return;
+            }
+            
+            chartContainer.innerHTML = '';
+            
+            const total = atendimentos.length;
+            
+            if (total === 0) {
+                chartContainer.innerHTML = '<p style="text-align: center; color: #666; margin: 20px 0;">Nenhum atendimento encontrado para o período selecionado</p>';
+                return;
+            }
+            
+            Object.entries(tiposCount).forEach(([tipo, count]) => {
+                const percentage = ((count / total) * 100).toFixed(1);
+                
+                const barContainer = document.createElement('div');
+                barContainer.className = 'chart-bar-container';
+                barContainer.style.cssText = 'margin-bottom: 10px;';
+                
+                const label = document.createElement('div');
+                label.textContent = `${tipo} (${count})`;
+                label.style.cssText = 'font-size: 12px; margin-bottom: 5px; color: #666;';
+                
+                const barBackground = document.createElement('div');
+                barBackground.style.cssText = 'background: #f0f0f0; height: 20px; border-radius: 10px; position: relative; overflow: hidden;';
+                
+                const bar = document.createElement('div');
+                bar.style.cssText = `background: linear-gradient(45deg, #667eea, #764ba2); height: 100%; width: ${percentage}%; border-radius: 10px; transition: width 0.3s ease;`;
+                
+                const percentageLabel = document.createElement('div');
+                percentageLabel.textContent = `${percentage}%`;
+                percentageLabel.style.cssText = 'position: absolute; right: 5px; top: 50%; transform: translateY(-50%); font-size: 11px; color: #333; font-weight: bold;';
+                
+                barBackground.appendChild(bar);
+                barBackground.appendChild(percentageLabel);
+                barContainer.appendChild(label);
+                barContainer.appendChild(barBackground);
+                chartContainer.appendChild(barContainer);
+            });
+        }
+        
+        // Gerar gráfico de notas dos clientes
+        // Gerar gráfico de atendimentos por período
+        function generateAtendimentosPeriodoChart(atendimentos) {
+            const periodoCount = {};
+            const hoje = new Date();
+            
+            // Últimos 7 dias
+            for (let i = 6; i >= 0; i--) {
+                const data = new Date(hoje);
+                data.setDate(data.getDate() - i);
+                const dataStr = data.toISOString().split('T')[0];
+                periodoCount[dataStr] = 0;
+            }
+            
+            atendimentos.forEach(a => {
+                if (a.solicitado_em) {
+                    const dataAtendimento = new Date(a.solicitado_em).toISOString().split('T')[0];
+                    if (periodoCount.hasOwnProperty(dataAtendimento)) {
+                        periodoCount[dataAtendimento]++;
+                    }
+                }
+            });
+            
+            const chartContainer = document.getElementById('atendimentosPeriodoChart');
+            if (!chartContainer) {
+                console.error('Container atendimentosPeriodoChart não encontrado');
+                return;
+            }
+            
+            chartContainer.innerHTML = '';
+            
+            const maxCount = Math.max(...Object.values(periodoCount), 1);
+            
+            Object.entries(periodoCount).forEach(([data, count]) => {
+                const dataFormatada = new Date(data).toLocaleDateString('pt-BR', { 
+                    day: '2-digit', 
+                    month: '2-digit' 
+                });
+                
+                const barContainer = document.createElement('div');
+                barContainer.className = 'chart-bar-container';
+                barContainer.style.cssText = 'margin-bottom: 10px;';
+                
+                const label = document.createElement('div');
+                label.textContent = `${dataFormatada} (${count})`;
+                label.style.cssText = 'font-size: 12px; margin-bottom: 5px; color: #666;';
+                
+                const barBackground = document.createElement('div');
+                barBackground.style.cssText = 'background: #f0f0f0; height: 20px; border-radius: 10px; position: relative; overflow: hidden;';
+                
+                const percentage = (count / maxCount) * 100;
+                const bar = document.createElement('div');
+                bar.style.cssText = `background: linear-gradient(45deg, #4facfe, #00f2fe); height: 100%; width: ${percentage}%; border-radius: 10px; transition: width 0.3s ease;`;
+                
+                barBackground.appendChild(bar);
+                barContainer.appendChild(label);
+                barContainer.appendChild(barBackground);
+                chartContainer.appendChild(barContainer);
+            });
+        }
+        
+        // Exibir últimos atendimentos
+        function displayUltimosAtendimentos(atendimentos) {
+            const container = document.getElementById('ultimosAtendimentos');
+            container.innerHTML = '';
+            
+            if (atendimentos.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #666; margin: 20px 0;">Nenhum atendimento encontrado</p>';
+                return;
+            }
+            
+            atendimentos.forEach(atendimento => {
+                const item = document.createElement('div');
+                item.style.cssText = 'background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+                
+                const dataFormatada = atendimento.solicitado_em 
+                    ? new Date(atendimento.solicitado_em).toLocaleDateString('pt-BR', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    })
+                    : 'Data não informada';
+                
+                const nota = atendimento.nota_do_cliente || 'N/A';
+                const tipo = atendimento.tipo_de_atendimento || 'Não especificado';
+                const status = atendimento.finalizado_em ? 'Finalizado' : 'Em andamento';
+                
+                item.innerHTML = `
+                    <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 8px;">
+                        <strong style="color: #333;">Atendimento #${atendimento.numero_do_atendimento || atendimento.id_atendimento}</strong>
+                        <span style="background: ${status === 'Finalizado' ? '#e8f5e8' : '#fff3cd'}; color: ${status === 'Finalizado' ? '#155724' : '#856404'}; padding: 2px 8px; border-radius: 12px; font-size: 11px;">${status}</span>
+                    </div>
+                    <div style="font-size: 12px; color: #666; margin-bottom: 5px;">
+                        <i class="fas fa-calendar"></i> ${dataFormatada}
+                    </div>
+                    <div style="font-size: 12px; color: #666; margin-bottom: 5px;">
+                        <i class="fas fa-tag"></i> ${tipo}
+                    </div>
+                    <div style="font-size: 12px; color: #666;">
+                        <i class="fas fa-star"></i> Nota: ${nota}
+                    </div>
+                    ${atendimento.observacao ? `<div style="font-size: 12px; color: #666; margin-top: 8px; padding-top: 8px; border-top: 1px solid #eee;"><i class="fas fa-comment"></i> ${atendimento.observacao}</div>` : ''}
+                `;
+                
+                container.appendChild(item);
+            });
+        }
+        
         // Pesquisar chaves
         async function handleSearch(e) {
             e.preventDefault();
@@ -1262,14 +1646,51 @@
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('active');
             });
-            document.querySelector(`[data-page="${pageName}"]`).classList.add('active');
+            const navItem = document.querySelector(`[data-page="${pageName}"]`);
+            if (navItem) {
+                navItem.classList.add('active');
+            }
             
             // Atualizar breadcrumb
             const pageNames = {
                 'dashboard': 'Dashboard',
-                'search': 'Consultar Chaves'
+                'search': 'Consultar Chaves',
+                'statistics': 'Estatísticas de Atendimento'
             };
             document.getElementById('currentPage').textContent = pageNames[pageName] || pageName;
+        }
+        
+        // Mostrar página de estatísticas
+        function showStatisticsPage() {
+            showPage('statistics');
+            initializeFilters();
+            loadAtendimentoStats();
+        }
+        
+        // Inicializar filtros com valores padrão
+        function initializeFilters() {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            const currentMonth = now.getMonth() + 1; // getMonth() retorna 0-11
+            
+            // Configurar filtro de ano
+            const filtroAno = document.getElementById('filtroAno');
+            filtroAno.innerHTML = '';
+            
+            // Adicionar anos (últimos 5 anos + próximo ano)
+            for (let year = currentYear - 4; year <= currentYear + 1; year++) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                if (year === currentYear) {
+                    option.selected = true;
+                }
+                filtroAno.appendChild(option);
+            }
+            
+            // Configurar filtro de mês (já tem as opções no HTML, só selecionar o atual)
+            const filtroMes = document.getElementById('filtroMes');
+            filtroMes.value = currentMonth;
         }
         
         // Toggle sidebar
