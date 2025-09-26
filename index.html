@@ -707,24 +707,16 @@
                 </div>
                 
                 <div class="nav-group">
-                    <div class="nav-group-title">Relatórios</div>
+                    <div class="nav-group-title">Estatísticas</div>
                     <a href="#" class="nav-item">
                         <i class="nav-icon fas fa-chart-bar"></i>
-                        <span class="nav-text">Relatórios</span>
+                        <span class="nav-text">Estatísticas</span>
                         <span class="nav-badge">3</span>
-                    </a>
-                    <a href="#" class="nav-item">
-                        <i class="nav-icon fas fa-history"></i>
-                        <span class="nav-text">Histórico</span>
                     </a>
                 </div>
                 
                 <div class="nav-group">
-                    <div class="nav-group-title">Configurações</div>
-                    <a href="#" class="nav-item">
-                        <i class="nav-icon fas fa-cog"></i>
-                        <span class="nav-text">Configurações</span>
-                    </a>
+                    <div class="nav-group-title">Sistema</div>
                     <a href="#" class="nav-item" onclick="logout()">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <span class="nav-text">Sair</span>
@@ -776,6 +768,14 @@
             <div class="content">
                 <!-- Dashboard Page -->
                 <div id="dashboardPage" class="page">
+                    <!-- Mensagem do Cliente (se existir) -->
+                    <div id="clientMessage" class="card" style="display: none; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; margin-bottom: 2rem; border: none; box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);">
+                        <div class="card-body text-center" style="padding: 2rem;">
+                            <i class="fas fa-comment-alt" style="font-size: 2.5rem; margin-bottom: 1rem; opacity: 0.9;"></i>
+                            <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0; text-shadow: 0 2px 4px rgba(0,0,0,0.2);"></h3>
+                        </div>
+                    </div>
+
                     <!-- Client Info Card -->
                     <div class="card">
                         <div class="card-header">
@@ -1033,6 +1033,17 @@
             ].filter(Boolean).join(', ');
             
             document.getElementById('clientAddress').textContent = address || '-';
+            
+            // Exibir mensagem do cliente se existir
+            const clientMessage = currentUser.mensagem;
+            const messageElement = document.getElementById('clientMessage');
+            if (clientMessage && clientMessage.trim()) {
+                const messageText = messageElement.querySelector('h3');
+                messageText.textContent = clientMessage;
+                messageElement.style.display = 'block';
+            } else {
+                messageElement.style.display = 'none';
+            }
             
             // Avatar
             const initials = currentUser.nome ? currentUser.nome.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'U';
@@ -1307,6 +1318,9 @@
             document.getElementById('clientEmail').textContent = '-';
             document.getElementById('clientContacts').textContent = '-';
             document.getElementById('clientAddress').textContent = '-';
+            
+            // Limpar mensagem do cliente
+            document.getElementById('clientMessage').style.display = 'none';
             
             // Resetar avatar para padrão
             document.getElementById('userInitials').textContent = 'U';
