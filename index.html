@@ -811,9 +811,11 @@
                                     <div id="clientContacts" class="form-input" style="background-color: var(--gray-50); border: none;">-</div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="form-label">Endereço</label>
-                                <div id="clientAddress" class="form-input" style="background-color: var(--gray-50); border: none;">-</div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Endereço</label>
+                                    <div id="clientAddress" class="form-input" style="background-color: var(--gray-50); border: none;">-</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1167,6 +1169,21 @@
             ].filter(Boolean).join(', ');
             
             document.getElementById('clientAddress').textContent = address || '-';
+            
+            // Controlar visibilidade do menu Estatísticas (sem exibir o campo na interface)
+            const visualizarEstatisticas = currentUser.visualizar_estatisticas || 'N';
+            const menuEstatisticas = document.querySelector('.nav-item[onclick="showStatisticsPage()"]');
+            if (menuEstatisticas) {
+                if (visualizarEstatisticas === 'S') {
+                    menuEstatisticas.style.display = 'flex';
+                    menuEstatisticas.style.opacity = '1';
+                    menuEstatisticas.style.pointerEvents = 'auto';
+                } else {
+                    menuEstatisticas.style.display = 'none';
+                    menuEstatisticas.style.opacity = '0.5';
+                    menuEstatisticas.style.pointerEvents = 'none';
+                }
+            }
             
             // Exibir mensagem do cliente se existir
             const clientMessage = currentUser.mensagem;
@@ -1796,6 +1813,12 @@
         
         // Mostrar página de estatísticas
         function showStatisticsPage() {
+            // Verificar se o cliente tem permissão para visualizar estatísticas
+            if (!currentUser || currentUser.visualizar_estatisticas !== 'S') {
+                // Se não tem permissão, não faz nada (ignora o clique)
+                return;
+            }
+            
             showPage('statistics');
             initializeFilters();
             loadAtendimentoStats();
