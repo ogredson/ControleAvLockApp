@@ -904,6 +904,10 @@
                                         <i class="fas fa-times"></i>
                                         Limpar
                                     </button>
+                                    <button type="button" class="btn btn-primary" onclick="showIncluirCodigoModal()" style="background-color: #007bff; border-color: #007bff; font-weight: 600;">
+                                        <i class="fas fa-plus"></i>
+                                        Incluir Novo Código
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -2071,6 +2075,94 @@
             
             showToast('Arquivo CSV exportado com sucesso!', 'success');
         }
+
+        // Funções do Modal Incluir Novo Código
+        function showIncluirCodigoModal() {
+            document.getElementById('incluirCodigoModal').style.display = 'flex';
+        }
+
+        function closeIncluirCodigoModal() {
+            document.getElementById('incluirCodigoModal').style.display = 'none';
+            // Limpar formulário
+            document.getElementById('incluirCodigoForm').reset();
+        }
+
+        function getAppIdFromSistema(sistema) {
+            const sistemaAppIdMap = {
+                'SHOPCASH 11.0': 11000,
+                'SHOPCASH 10.0': 10000,
+                'SHOPCASH 9.0': 9000,
+                'SHOPCASH 8.0': 6500,
+                'SHOPCASH 7.0': 6400,
+                'SHOPCASH 6.0': 6300
+            };
+            return sistemaAppIdMap[sistema] || null;
+        }
+
+        async function salvarNovoCodigo() {
+            const codigoAvlock = document.getElementById('codigoAvlockNovo').value.trim();
+            const sistema = document.getElementById('sistemaNovo').value;
+            const observacoes = document.getElementById('observacoesNovo').value.trim();
+
+            // Validações
+            if (!codigoAvlock) {
+                showToast('Por favor, digite o código AvLock', 'error');
+                return;
+            }
+
+            if (!sistema) {
+                showToast('Por favor, selecione o sistema', 'error');
+                return;
+            }
+
+            if (!currentUser || !currentUser.id_cliente) {
+                showToast('Erro: Cliente não identificado', 'error');
+                return;
+            }
+
+            // Mapear sistema para appid
+            const appid = getAppIdFromSistema(sistema);
+            if (!appid) {
+                showToast('Erro: Sistema inválido', 'error');
+                return;
+            }
+
+            try {
+                // Preparar dados para inserção
+                const dadosInsercao = {
+                    id_cliente: currentUser.id_cliente,
+                    codigo_avlock: codigoAvlock,
+                    sistema: sistema,
+                    dias_liberacao: 15,
+                    appid: appid,
+                    observacoes: observacoes || null,
+                    modalidade: 0,
+                    status_liberacao: 'Inativo',
+                    tipo_liberacao: 'Recorrente'
+                };
+
+                // Inserir na tabela Contratos_itens
+                const { data, error } = await supabase
+                    .from('contratos_itens')
+                    .insert([dadosInsercao]);
+
+                if (error) {
+                    console.error('Erro ao inserir código:', error);
+                    showToast('Erro ao salvar código: ' + error.message, 'error');
+                    return;
+                }
+
+                showToast('Código incluído com sucesso!', 'success');
+                closeIncluirCodigoModal();
+                
+                // Opcional: Atualizar a pesquisa se houver resultados visíveis
+                // searchKeys();
+
+            } catch (error) {
+                console.error('Erro ao salvar código:', error);
+                showToast('Erro ao salvar código', 'error');
+            }
+        }
         
         // Load saved theme
         const savedTheme = localStorage.getItem('theme');
@@ -2078,5 +2170,106 @@
             document.documentElement.setAttribute('data-theme', savedTheme);
         }
     </script>
+
+    <!-- Modal Incluir Novo Código -->
+    <div id="incluirCodigoModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Incluir Novo Código</h3>
+                <span class="close" onclick="closeIncluirCodigoModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="incluirCodigoForm">
+                    <div class="form-group">
+                        <label class="form-label" for="codigoAvlockNovo">Código AvLock *</label>
+                        <input type="text" id="codigoAvlockNovo" class="form-input" required placeholder="Digite o código AvLock">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="sistemaNovo">Sistema *</label>
+                        <select id="sistemaNovo" class="form-input" required>
+                            <option value="">Selecione o sistema</option>
+                            <option value="SHOPCASH 11.0">SHOPCASH 11.0</option>
+                            <option value="SHOPCASH 10.0">SHOPCASH 10.0</option>
+                            <option value="SHOPCASH 9.0">SHOPCASH 9.0</option>
+                            <option value="SHOPCASH 8.0">SHOPCASH 8.0</option>
+                            <option value="SHOPCASH 7.0">SHOPCASH 7.0</option>
+                            <option value="SHOPCASH 6.0">SHOPCASH 6.0</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="observacoesNovo">Observações</label>
+                        <textarea id="observacoesNovo" class="form-input" rows="3" placeholder="Digite observações (opcional)"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeIncluirCodigoModal()">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="salvarNovoCodigo()">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            opacity: 1;
+            background: white;
+        }
+
+        .modal-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: var(--gray-800);
+        }
+
+        .close {
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--gray-500);
+        }
+
+        .close:hover {
+            color: var(--gray-800);
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+    </style>
 </body>
 </html>
