@@ -1,0 +1,60 @@
+id_cliente,cliente,numero_do_atendimento,iniciado_por,finalizado_por,participantes,solicitado_em,iniciado_em,finalizado_em,observacao,nota_do_cliente,avaliacao_do_cliente,relato_do_operador,tipo_de_atendimento,tipo_de_fechamento
+1,558481017925,11304,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,29/09/25 09:03,29/09/25 11:26,29/09/25 17:34,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+1,558592787369,11313,Izaias Pereira,Samuel Nojoza,Samuel Nojoza,29/09/25 15:13,29/09/25 15:16,29/09/25 18:08,,,,,Outros,Não Resolvido
+4,Débora-Abig Pneus,11300,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,29/09/25 08:02,29/09/25 08:02,29/09/25 14:58,,,5,Com muita eficiência ,Outros,Resolvido
+9,Arthur Auto Peças - Cintia - Usuária,11330,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,30/09/25 09:50,30/09/25 10:27,30/09/25 10:42,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+9,Arthur Auto Peças - Stefany Barroso - Usuária,11293,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,27/09/25 09:04,27/09/25 09:12,27/09/25 10:46,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+9,Arthur Auto Peças - Tiphany Barroso - Usuária,11339,Rian Duarte,Luiz Ricardo,Rian Duarte - Luiz Ricardo,30/09/25 15:12,30/09/25 15:13,30/09/25 23:26,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+9,Arthur Auto Peças - Tiphany Barroso - Usuária,11312,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,29/09/25 15:03,29/09/25 15:13,29/09/25 17:33,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+11,Auto Peças Barak - Beto - Usuário,11322,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,30/09/25 08:06,30/09/25 08:08,30/09/25 09:13,,,,,Avlock,Resolvido
+12,Bom Preço Auto Pecas - Natália Cardoso - Diretora,11331,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo - Izaias Pereira,30/09/25 10:37,30/09/25 10:38,30/09/25 17:05,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+12,Bom Preço Auto Pecas - Natália Cardoso - Diretora,11315,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,29/09/25 15:59,29/09/25 16:09,29/09/25 17:32,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+12,Bom Preço Auto Pecas - Natália Cardoso - Diretora,11311,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,29/09/25 14:56,29/09/25 10:29,29/09/25 15:55,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,13-Economica Matriz - Ludmilla Vasconcelo - Usuária,11290,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,27/09/25 08:04,27/09/25 08:33,27/09/25 10:30,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,Auto Peças Econômica,11348,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,30/09/25 17:59,30/09/25 17:59,30/09/25 17:59,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,Auto Peças Econômica,11341,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,30/09/25 16:27,30/09/25 16:31,30/09/25 17:58,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,Auto Peças Econômica,11291,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,27/09/25 08:18,27/09/25 08:32,27/09/25 08:43,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+13,Compras Grupo Santo Antônio Vanderlania,11337,Izaias Pereira,Luiz Ricardo,Izaias Pereira - Luiz Ricardo,30/09/25 14:39,30/09/25 14:51,30/09/25 23:26,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+14,Auto Peças Menezes - Val - Caixa,11346,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,30/09/25 17:22,30/09/25 17:43,30/09/25 17:54,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+14,Auto Peças Menezes - Val - Caixa,11321,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,30/09/25 07:54,30/09/25 07:54,30/09/25 11:02,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+14,Auto Peças Menezes - Val - Caixa,11305,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,29/09/25 09:05,29/09/25 10:17,29/09/25 18:00,,,,,Outros,Não Resolvido
+14,Auto Peças Menezes - Val - Caixa,11296,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,27/09/25 09:50,27/09/25 10:06,27/09/25 11:03,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+15,Lara Zeneyde - Operadora de Caixa - RM,11347,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,30/09/25 17:48,30/09/25 17:54,30/09/25 23:25,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+15,RM - Claudean Silva - Usuário,11326,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,30/09/25 08:40,30/09/25 08:40,30/09/25 09:20,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+15,RM - Claudean Silva - Usuário,11319,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,29/09/25 18:02,29/09/25 19:12,29/09/25 19:12,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+24,Pedro Nunes - Pedro II,11343,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,30/09/25 16:47,30/09/25 17:58,30/09/25 17:58,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,Carreiro Auto Peças - Alex - Usuário,11344,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,30/09/25 17:04,30/09/25 17:05,30/09/25 17:52,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,Carreiro Auto Peças - Camila - Diretora,11332,Luiz Ricardo,Rian Duarte,Luiz Ricardo - Rian Duarte,30/09/25 10:49,30/09/25 10:58,30/09/25 15:50,,,,,Outros,Resolvido
+26,Carreiro Auto Peças-Poranga,11303,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,29/09/25 08:41,29/09/25 08:52,29/09/25 17:50,,,5,o melhor atendimento,Dificuldades Operacionais e Ajustes,Resolvido
+26,Carreiro Auto Peças-Poranga,11292,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,27/09/25 08:24,27/09/25 08:32,27/09/25 09:09,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+26,Carreiro Poranga - Camile - Usuária,11342,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,30/09/25 16:33,30/09/25 16:34,30/09/25 16:43,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+27,Erandir-center Ar,11340,Luiz Ricardo,Izaias Pereira,Samuel Nojoza - Izaias Pereira,30/09/25 16:08,30/09/25 23:26,01/10/25 11:18,,,,,Dificuldades Operacionais e Ajustes,Não Resolvido
+27,Erandir-center Ar,11314,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,29/09/25 15:20,29/09/25 19:11,29/09/25 19:11,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+30,30-Carlos Cícero,11328,Luziara Lavor,Luziara Lavor,Luziara Lavor - Luiz Ricardo,30/09/25 09:24,30/09/25 09:24,30/09/25 14:55,,,,,Avlock,Resolvido
+30,Center Ana Paula,11294,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,27/09/25 09:27,27/09/25 10:05,27/09/25 10:48,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+43,Rita- Fortlog-5511988254319,11307,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,29/09/25 10:19,29/09/25 10:32,29/09/25 17:31,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+46,HVM - Nilton Barreto,11323,Samuel Nojoza,Connect Soft,Connect Soft,30/09/25 08:15,30/09/25 08:35,01/10/25 10:13,,,,,Problemas Financeiros e Fiscais,Resolvido
+49,Roberto Motos - Carlos - Gerente,11306,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,29/09/25 10:16,29/09/25 10:18,29/09/25 18:03,,,,,Outros,Resolvido
+58,Financeiro Mapi (Raphaela,11302,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,29/09/25 08:35,29/09/25 08:37,29/09/25 10:10,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+58,Financeiro Mapi (Raphaela,11295,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,27/09/25 09:34,27/09/25 10:05,27/09/25 10:38,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+64,Ananias Neto - Nucleo - Faturamento,11335,Izaias Pereira,Luiz Ricardo,Izaias Pereira - Luiz Ricardo,30/09/25 14:06,30/09/25 14:53,30/09/25 17:04,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+64,Ananias Neto - Nucleo - Faturamento,11318,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,29/09/25 17:26,29/09/25 17:27,29/09/25 17:27,,,,,Outros,Resolvido
+65,Oficina  Marcos - Gisyane - Usuária,11336,Izaias Pereira,Luiz Ricardo,Izaias Pereira - Luiz Ricardo,30/09/25 14:15,30/09/25 14:52,30/09/25 17:58,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+66,Oliveira Neto-Fortlog,11320,Samuel Nojoza,Samuel Nojoza,Samuel Nojoza,30/09/25 07:52,30/09/25 08:05,30/09/25 08:16,,,,,Avlock,Resolvido
+68,Ricardo Rufino-PHL SILVA,11298,Rian Duarte,Rian Duarte,Rian Duarte,29/09/25 07:39,29/09/25 08:04,29/09/25 08:17,,,,,Avlock,Resolvido
+73,Samuel Jacob-Isa,11329,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,30/09/25 09:48,30/09/25 10:24,30/09/25 10:27,,,5,,Dificuldades Operacionais e Ajustes,Resolvido
+73,Samuel Jacob-Isa,11316,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,29/09/25 16:37,29/09/25 17:22,29/09/25 17:34,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+73,Samuel Jacob-Isa,11309,Luziara Lavor,Luiz Ricardo,Luziara Lavor - Luiz Ricardo,29/09/25 14:03,29/09/25 14:26,29/09/25 16:04,,,,,Outros,Inatividade do Cliente
+75,Savio Componentes - Rafaela - Usuária,11308,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,29/09/25 10:48,29/09/25 11:25,29/09/25 14:30,,,,,Avlock,Resolvido
+75,Savio Componentes - Rafaela - Usuária,11301,Rian Duarte,Luiz Ricardo,Rian Duarte - Luiz Ricardo,29/09/25 08:31,29/09/25 08:33,29/09/25 10:11,,,,,Avlock,Resolvido
+,Edivane💕- Ze maria,11299,Rian Duarte,Rian Duarte,Rian Duarte,29/09/25 07:51,29/09/25 08:05,29/09/25 08:17,,,,,Avlock,Resolvido
+,Emanuel Sotero,11338,Izaias Pereira,Luiz Ricardo,Izaias Pereira - Luiz Ricardo,30/09/25 14:40,30/09/25 14:53,30/09/25 23:27,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+,Evandyra,11345,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,30/09/25 17:17,30/09/25 23:25,30/09/25 23:25,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+,Jcar - Junior Sandes - Diretor,11324,Luziara Lavor,Luziara Lavor,Luziara Lavor,30/09/25 08:32,30/09/25 08:35,30/09/25 08:56,,,,,Avlock,Resolvido
+,JCAR AUTO CENTER,11325,Luziara Lavor,Luziara Lavor,Luziara Lavor,30/09/25 08:33,30/09/25 08:34,30/09/25 09:23,,,,,Avlock,Resolvido
+,Jeferson Mendes,11289,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,27/09/25 07:54,27/09/25 08:32,27/09/25 08:44,,,,,Avlock,Resolvido
+,Juliana,11333,Rian Duarte,Luiz Ricardo,Rian Duarte - Luiz Ricardo,30/09/25 11:40,30/09/25 14:40,30/09/25 17:59,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+,Katiusse Torquato,11334,Rian Duarte,Luiz Ricardo,Luziara Lavor - Rian Duarte - Luiz Ricardo,30/09/25 12:53,30/09/25 14:39,30/09/25 23:27,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+,Katiusse Torquato,11327,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,30/09/25 09:22,30/09/25 09:23,30/09/25 10:31,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+,Katiusse Torquato,11310,Luiz Ricardo,Luiz Ricardo,Luiz Ricardo,29/09/25 14:23,29/09/25 19:11,29/09/25 19:11,,,,,Dificuldades Operacionais e Ajustes,Resolvido
+,WU - Ione - Usuário,11317,Izaias Pereira,Luiz Ricardo,Izaias Pereira - Luiz Ricardo,29/09/25 16:43,29/09/25 16:46,29/09/25 17:31,,,,,Avlock,Resolvido
