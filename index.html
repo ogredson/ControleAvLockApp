@@ -826,6 +826,7 @@
                             <h3 class="card-title">
                                 <i class="fas fa-hourglass-half"></i>
                                 Pendentes de Autorização
+                                <span id="pendentesCount" style="margin-left: 0.5rem; background-color: #eee; color: #333; border-radius: 999px; padding: 2px 8px; font-weight: 600;">0</span>
                             </h3>
                         </div>
                         <div class="card-body">
@@ -1295,6 +1296,38 @@
             }
         }
 
+        // Extrair núcleo do código AvLock (preferindo padrão A+digits)
+        function extractAvlockCore(raw) {
+            const s = String(raw || '').toUpperCase().trim();
+            if (!s) return '';
+            // Padrão principal: A seguido de dígitos
+            const mA = s.match(/A[0-9]+/);
+            if (mA) return mA[0];
+            // Caso com ruído tipo "IN" antes do código (ex.: INA22135)
+            const mInA = s.match(/IN[^A-Z0-9]*A[0-9]+/);
+            if (mInA) {
+                const mInner = mInA[0].match(/A[0-9]+/);
+                if (mInner) return mInner[0];
+            }
+            // Genérico: primeira letra seguida de dígitos
+            const mGeneric = s.match(/[A-Z][0-9]+/);
+            if (mGeneric) return mGeneric[0].replace(/[^A-Z0-9]/g, '');
+            // Fallback: remover tudo que não seja alfanumérico
+            return s.replace(/[^A-Z0-9]/g, '');
+        }
+
+        // Helper para sanitizar exibição do código AvLock
+        function sanitizeAvlockDisplay(raw) {
+            const core = extractAvlockCore(raw);
+            return core || '-';
+        }
+
+        // Normalizar código AvLock para comparação (usa núcleo A+digits)
+        function normalizeAvlockKey(raw) {
+            const core = extractAvlockCore(raw);
+            return String(core).trim().toUpperCase();
+        }
+
         // Função para carregar códigos pendentes de autorização
         async function loadPendentesAutorizacao() {
             if (!currentUser) return;
@@ -1303,6 +1336,7 @@
             const pendentesGrid = document.getElementById('pendentesGrid');
             const noPendentes = document.getElementById('noPendentes');
             const pendentesTableBody = document.getElementById('pendentesTableBody');
+            const pendentesCountEl = document.getElementById('pendentesCount');
             
             // Mostrar loading
             pendentesLoading.style.display = 'block';
@@ -1310,34 +1344,48 @@
             noPendentes.style.display = 'none';
             
             try {
-                // Buscar códigos pendentes do cliente
+                // Buscar diretamente apenas itens pendentes do cliente
                 const { data: pendentes, error } = await supabase
                     .from('contratos_itens')
-                    .select('codigo_avlock, sistema, observacoes')
+                    .select('codigo_avlock, sistema, observacoes, status_liberacao')
                     .eq('id_cliente', currentUser.id_cliente)
                     .eq('status_liberacao', 'Pendente')
                     .order('codigo_avlock', { ascending: true });
-                
+
                 if (error) throw error;
-                
+
                 // Esconder loading
                 pendentesLoading.style.display = 'none';
                 
-                if (pendentes && pendentes.length > 0) {
+                const pendentesFiltrados = pendentes || [];
+
+                // Atualizar contador
+                const total = pendentesFiltrados.length;
+                if (pendentesCountEl) pendentesCountEl.textContent = total;
+
+                if (total > 0) {
                     // Mostrar grid com dados
                     pendentesGrid.style.display = 'block';
                     
                     // Limpar tabela
                     pendentesTableBody.innerHTML = '';
                     
-                    // Adicionar linhas
-                    pendentes.forEach(item => {
+                    // Adicionar linhas com valores sanitizados e textContent
+                    pendentesFiltrados.forEach(item => {
                         const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${item.codigo_avlock || '-'}</td>
-                            <td>${item.sistema || '-'}</td>
-                            <td>${item.observacoes || '-'}</td>
-                        `;
+                        
+                        const tdCodigo = document.createElement('td');
+                        tdCodigo.textContent = sanitizeAvlockDisplay(item.codigo_avlock);
+                        
+                        const tdSistema = document.createElement('td');
+                        tdSistema.textContent = item.sistema || '-';
+                        
+                        const tdObs = document.createElement('td');
+                        tdObs.textContent = item.observacoes || '-';
+                        
+                        row.appendChild(tdCodigo);
+                        row.appendChild(tdSistema);
+                        row.appendChild(tdObs);
                         pendentesTableBody.appendChild(row);
                     });
                 } else {
@@ -1349,6 +1397,7 @@
                 console.error('Erro ao carregar pendentes:', error);
                 pendentesLoading.style.display = 'none';
                 noPendentes.style.display = 'block';
+                if (pendentesCountEl) pendentesCountEl.textContent = '0';
             }
         }
         
