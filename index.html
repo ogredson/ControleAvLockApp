@@ -1296,24 +1296,16 @@
             }
         }
 
-        // Extrair núcleo do código AvLock (preferindo padrão A+digits)
+        // Extrair código AvLock preservando o texto original, só removendo prefixo "IN" quando seguido por "A+digitos"
         function extractAvlockCore(raw) {
-            const s = String(raw || '').toUpperCase().trim();
-            if (!s) return '';
-            // Padrão principal: A seguido de dígitos
-            const mA = s.match(/A[0-9]+/);
-            if (mA) return mA[0];
-            // Caso com ruído tipo "IN" antes do código (ex.: INA22135)
-            const mInA = s.match(/IN[^A-Z0-9]*A[0-9]+/);
-            if (mInA) {
-                const mInner = mInA[0].match(/A[0-9]+/);
-                if (mInner) return mInner[0];
-            }
-            // Genérico: primeira letra seguida de dígitos
-            const mGeneric = s.match(/[A-Z][0-9]+/);
-            if (mGeneric) return mGeneric[0].replace(/[^A-Z0-9]/g, '');
-            // Fallback: remover tudo que não seja alfanumérico
-            return s.replace(/[^A-Z0-9]/g, '');
+            const original = String(raw || '').trim();
+            if (!original) return '';
+            const up = original.toUpperCase();
+            // Remover prefixo IN apenas quando precede claramente um padrão A+digitos
+            const mInA = up.match(/^IN\s*-?\s*(A[0-9]+)/);
+            if (mInA) return mInA[1];
+            // Caso contrário, retornar o código completo em maiúsculas
+            return up;
         }
 
         // Helper para sanitizar exibição do código AvLock
@@ -1322,10 +1314,10 @@
             return core || '-';
         }
 
-        // Normalizar código AvLock para comparação (usa núcleo A+digits)
+        // Normalizar código AvLock para comparação
         function normalizeAvlockKey(raw) {
             const core = extractAvlockCore(raw);
-            return String(core).trim().toUpperCase();
+            return String(core || '').trim().toUpperCase();
         }
 
         // Função para carregar códigos pendentes de autorização
