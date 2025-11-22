@@ -1,0 +1,49 @@
+id_cliente;numero_do_atendimento;iniciado_por;finalizado_por;participantes;solicitado_em;iniciado_em;finalizado_em;observacao;nota_do_cliente;avaliacao_do_cliente;relato_do_operador;tipo_de_atendimento;tipo_de_fechamento
+1;11304;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-29 09:03:00;2025-09-29 11:26:00;2025-09-29 17:34:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+1;11313;Izaias Pereira;Samuel Nojoza;Samuel Nojoza;2025-09-29 15:13:00;2025-09-29 15:16:00;2025-09-29 18:08:00;;;;;Outros;Não Resolvido
+4;11300;Samuel Nojoza;Samuel Nojoza;Samuel Nojoza;2025-09-29 08:02:00;2025-09-29 08:02:00;2025-09-29 14:58:00;;;5;Com muita eficiência ;Outros;Resolvido
+9;11330;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-30 09:50:00;2025-09-30 10:27:00;2025-09-30 10:42:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+9;11293;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-27 09:04:00;2025-09-27 09:12:00;2025-09-27 10:46:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+9;11339;Rian Duarte;Luiz Ricardo;Rian Duarte - Luiz Ricardo;2025-09-30 15:12:00;2025-09-30 15:13:00;2025-09-30 23:26:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+9;11312;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-29 15:03:00;2025-09-29 15:13:00;2025-09-29 17:33:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+11;11322;Samuel Nojoza;Samuel Nojoza;Samuel Nojoza;2025-09-30 08:06:00;2025-09-30 08:08:00;2025-09-30 09:13:00;;;;;Avlock;Resolvido
+12;11331;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo - Izaias Pereira;2025-09-30 10:37:00;2025-09-30 10:38:00;2025-09-30 17:05:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+12;11315;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-29 15:59:00;2025-09-29 16:09:00;2025-09-29 17:32:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+12;11311;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-29 14:56:00;2025-09-29 10:29:00;2025-09-29 15:55:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+13;11290;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-27 08:04:00;2025-09-27 08:33:00;2025-09-27 10:30:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+13;11348;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-30 17:59:00;2025-09-30 17:59:00;2025-09-30 17:59:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+13;11341;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-30 16:27:00;2025-09-30 16:31:00;2025-09-30 17:58:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+13;11291;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-27 08:18:00;2025-09-27 08:32:00;2025-09-27 08:43:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+13;11337;Izaias Pereira;Luiz Ricardo;Izaias Pereira - Luiz Ricardo;2025-09-30 14:39:00;2025-09-30 14:51:00;2025-09-30 23:26:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+14;11346;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-30 17:22:00;2025-09-30 17:43:00;2025-09-30 17:54:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+14;11321;Samuel Nojoza;Samuel Nojoza;Samuel Nojoza;2025-09-30 07:54:00;2025-09-30 07:54:00;2025-09-30 11:02:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+14;11305;Samuel Nojoza;Samuel Nojoza;Samuel Nojoza;2025-09-29 09:05:00;2025-09-29 10:17:00;2025-09-29 18:00:00;;;;;Outros;Não Resolvido
+14;11296;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-27 09:50:00;2025-09-27 10:06:00;2025-09-27 11:03:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+15;11347;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-30 17:48:00;2025-09-30 17:54:00;2025-09-30 23:25:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+15;11326;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-30 08:40:00;2025-09-30 08:40:00;2025-09-30 09:20:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+15;11319;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-29 18:02:00;2025-09-29 19:12:00;2025-09-29 19:12:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+24;11343;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-30 16:47:00;2025-09-30 17:58:00;2025-09-30 17:58:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+26;11344;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-30 17:04:00;2025-09-30 17:05:00;2025-09-30 17:52:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+26;11332;Luiz Ricardo;Rian Duarte;Luiz Ricardo - Rian Duarte;2025-09-30 10:49:00;2025-09-30 10:58:00;2025-09-30 15:50:00;;;;;Outros;Resolvido
+26;11303;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-29 08:41:00;2025-09-29 08:52:00;2025-09-29 17:50:00;;;5;o melhor atendimento;Dificuldades Operacionais e Ajustes;Resolvido
+26;11292;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-27 08:24:00;2025-09-27 08:32:00;2025-09-27 09:09:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+26;11342;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-30 16:33:00;2025-09-30 16:34:00;2025-09-30 16:43:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+27;11340;Luiz Ricardo;Izaias Pereira;Samuel Nojoza - Izaias Pereira;2025-09-30 16:08:00;2025-09-30 23:26:00;2025-10-01 11:18:00;;;;;Dificuldades Operacionais e Ajustes;Não Resolvido
+27;11314;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-29 15:20:00;2025-09-29 19:11:00;2025-09-29 19:11:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+30;11328;Luziara Lavor;Luziara Lavor;Luziara Lavor - Luiz Ricardo;2025-09-30 09:24:00;2025-09-30 09:24:00;2025-09-30 14:55:00;;;;;Avlock;Resolvido
+30;11294;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-27 09:27:00;2025-09-27 10:05:00;2025-09-27 10:48:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+43;11307;Samuel Nojoza;Samuel Nojoza;Samuel Nojoza;2025-09-29 10:19:00;2025-09-29 10:32:00;2025-09-29 17:31:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+46;11323;Samuel Nojoza;Connect Soft;Connect Soft;2025-09-30 08:15:00;2025-09-30 08:35:00;2025-10-01 10:13:00;;;;;Problemas Financeiros e Fiscais;Resolvido
+49;11306;Samuel Nojoza;Samuel Nojoza;Samuel Nojoza;2025-09-29 10:16:00;2025-09-29 10:18:00;2025-09-29 18:03:00;;;;;Outros;Resolvido
+58;11302;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-29 08:35:00;2025-09-29 08:37:00;2025-09-29 10:10:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+58;11295;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-27 09:34:00;2025-09-27 10:05:00;2025-09-27 10:38:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+64;11335;Izaias Pereira;Luiz Ricardo;Izaias Pereira - Luiz Ricardo;2025-09-30 14:06:00;2025-09-30 14:53:00;2025-09-30 17:04:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+64;11318;Samuel Nojoza;Samuel Nojoza;Samuel Nojoza;2025-09-29 17:26:00;2025-09-29 17:27:00;2025-09-29 17:27:00;;;;;Outros;Resolvido
+65;11336;Izaias Pereira;Luiz Ricardo;Izaias Pereira - Luiz Ricardo;2025-09-30 14:15:00;2025-09-30 14:52:00;2025-09-30 17:58:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+66;11320;Samuel Nojoza;Samuel Nojoza;Samuel Nojoza;2025-09-30 07:52:00;2025-09-30 08:05:00;2025-09-30 08:16:00;;;;;Avlock;Resolvido
+68;11298;Rian Duarte;Rian Duarte;Rian Duarte;2025-09-29 07:39:00;2025-09-29 08:04:00;2025-09-29 08:17:00;;;;;Avlock;Resolvido
+73;11329;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-30 09:48:00;2025-09-30 10:24:00;2025-09-30 10:27:00;;;5;;Dificuldades Operacionais e Ajustes;Resolvido
+73;11316;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-29 16:37:00;2025-09-29 17:22:00;2025-09-29 17:34:00;;;;;Dificuldades Operacionais e Ajustes;Resolvido
+73;11309;Luziara Lavor;Luiz Ricardo;Luziara Lavor - Luiz Ricardo;2025-09-29 14:03:00;2025-09-29 14:26:00;2025-09-29 16:04:00;;;;;Outros;Inatividade do Cliente
+75;11308;Luiz Ricardo;Luiz Ricardo;Luiz Ricardo;2025-09-29 10:48:00;2025-09-29 11:25:00;2025-09-29 14:30:00;;;;;Avlock;Resolvido
+75;11301;Rian Duarte;Luiz Ricardo;Rian Duarte - Luiz Ricardo;2025-09-29 08:31:00;2025-09-29 08:33:00;2025-09-29 10:11:00;;;;;Avlock;Resolvido

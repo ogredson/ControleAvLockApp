@@ -1142,6 +1142,26 @@
             
             // Set current year in search form
             document.getElementById('ano').value = new Date().getFullYear();
+
+            // Sanitizar campo de novo código AvLock no modal
+            const codigoInput = document.getElementById('codigoAvlockNovo');
+            const criteriaMsg = document.getElementById('codigoAvlockNovoCriteria');
+            if (codigoInput) {
+                const sanitize = () => {
+                    // força maiúsculas e remove caracteres não alfanuméricos, limitando a 6
+                    codigoInput.value = codigoInput.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
+                    // se existir um elemento de critérios, controla a visibilidade conforme a validação
+                    if (criteriaMsg) {
+                        if (/^[A-Z0-9]{6}$/.test(codigoInput.value)) {
+                            criteriaMsg.style.display = 'none';
+                        } else {
+                            criteriaMsg.style.display = '';
+                        }
+                    }
+                };
+                codigoInput.addEventListener('input', sanitize);
+                codigoInput.addEventListener('blur', sanitize);
+            }
         });
         
         // Login
@@ -2238,15 +2258,25 @@
         }
 
         async function salvarNovoCodigo() {
-            const codigoAvlock = document.getElementById('codigoAvlockNovo').value.trim();
+            // Referências ao input e mensagem de critério
+            const codigoInput = document.getElementById('codigoAvlockNovo');
+            const criteriaMsg = document.getElementById('codigoAvlockNovoCriteria');
+
+            // Sanitiza entrada: remove não alfanumérico e força maiúsculas
+            let codigoAvlock = (codigoInput.value || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+
+            // Validação: exatamente 6 caracteres A–Z/0–9
+            const isValidCodigo = /^[A-Z0-9]{6}$/.test(codigoAvlock);
+            if (!isValidCodigo) {
+                if (criteriaMsg) criteriaMsg.style.display = 'block';
+                codigoInput.focus();
+                return; // não envia se inválido
+            } else {
+                if (criteriaMsg) criteriaMsg.style.display = 'none';
+            }
+
             const sistema = document.getElementById('sistemaNovo').value;
             const observacoes = document.getElementById('observacoesNovo').value.trim();
-
-            // Validações
-            if (!codigoAvlock) {
-                showToast('Por favor, digite o código AvLock', 'error');
-                return;
-            }
 
             if (!sistema) {
                 showToast('Por favor, selecione o sistema', 'error');
@@ -2258,7 +2288,6 @@
                 return;
             }
 
-            // Mapear sistema para appid
             const appid = getAppIdFromSistema(sistema);
             if (!appid) {
                 showToast('Erro: Sistema inválido', 'error');
@@ -2266,10 +2295,9 @@
             }
 
             try {
-                // Preparar dados para inserção
                 const dadosInsercao = {
                     id_cliente: currentUser.id_cliente,
-                    codigo_avlock: codigoAvlock,
+                    codigo_avlock: codigoAvlock, // valor validado e sanitizado
                     sistema: sistema,
                     dias_liberacao: 15,
                     appid: appid,
@@ -2279,7 +2307,6 @@
                     tipo_liberacao: 'Recorrente'
                 };
 
-                // Inserir na tabela Contratos_itens
                 const { data, error } = await supabase
                     .from('contratos_itens')
                     .insert([dadosInsercao]);
@@ -2320,7 +2347,19 @@
                 <form id="incluirCodigoForm">
                     <div class="form-group">
                         <label class="form-label" for="codigoAvlockNovo">Código AvLock *</label>
-                        <input type="text" id="codigoAvlockNovo" class="form-input" required placeholder="Digite o código AvLock">
+                        <input
+                            type="text"
+                            id="codigoAvlockNovo"
+                            class="form-input"
+                            required
+                            placeholder="Digite o código AvLock"
+                            maxlength="6"
+                            pattern="[A-Z0-9]{6}"
+                            autocomplete="off"
+                        >
+                        <small id="codigoAvlockNovoCriteria" style="display:none; color:#b00020; font-size:0.85rem; margin-top:0.25rem;">
+                            o codigo deve conter 6 (seis) digitos e apenas letras e/ou numeros
+                        </small>
                     </div>
                     
                     <div class="form-group">
