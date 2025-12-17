@@ -1112,7 +1112,7 @@
         const SUPABASE_URL = 'https://ohexwiamhgsnahrjynko.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9oZXh3aWFtaGdzbmFocmp5bmtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg1NDM4MTcsImV4cCI6MjA3NDExOTgxN30.MYpemlbM2iYbnKWAGDWs8cbLJTKi0wK-o8P9jUDP59E';
         
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         
         // Estado da aplicação
         let currentUser = null;
@@ -1175,7 +1175,7 @@
             
             try {
                 // Buscar cliente no Supabase
-                const { data, error } = await supabase
+                const { data, error } = await supabaseClient
                     .from('clientes')
                     .select('*')
                     .eq('id_cliente', clientId)
@@ -1269,7 +1269,7 @@
             
             try {
                 // Buscar contratos do cliente
-                const { data: contratos, error } = await supabase
+                const { data: contratos, error } = await supabaseClient
                     .from('contratos_itens')
                     .select(`
                         *,
@@ -1357,7 +1357,7 @@
             
             try {
                 // Buscar diretamente apenas itens pendentes do cliente
-                const { data: pendentes, error } = await supabase
+                const { data: pendentes, error } = await supabaseClient
                     .from('contratos_itens')
                     .select('codigo_avlock, sistema, observacoes, status_liberacao')
                     .eq('id_cliente', currentUser.id_cliente)
@@ -1444,7 +1444,7 @@
                 const mesSelecionado = filtroMes ? parseInt(filtroMes.value) : null;
                 
                 // Buscar atendimentos do cliente
-                let query = supabase
+                let query = supabaseClient
                     .from('clientes_atendimentos')
                     .select('*')
                     .eq('id_cliente', currentUser.id_cliente);
@@ -1813,7 +1813,7 @@
             
             try {
                 // Construir query base
-                let query = supabase
+                let query = supabaseClient
                     .from('contratos_chaves')
                     .select(`
                         *,
@@ -2307,7 +2307,7 @@
                     tipo_liberacao: 'Recorrente'
                 };
 
-                const { data, error } = await supabase
+                const { data, error } = await supabaseClient
                     .from('contratos_itens')
                     .insert([dadosInsercao]);
 
