@@ -1,0 +1,29 @@
+         
+As tecnologias utilizadas neste projeto são simples e diretas, focadas em uma arquitetura sem processos de build complexos ("Vanilla"):
+
+### 1. Frontend (Interface)
+*   **HTML5 & CSS3**: Estrutura e estilização da página.
+    *   Uso de **CSS Variables** para gerenciamento de temas (incluindo Dark Mode).
+    *   Layout responsivo e estilização customizada sem frameworks CSS pesados (como Bootstrap ou Tailwind), embora a estrutura lembre utilitários modernos.
+*   **JavaScript (Vanilla JS)**: Lógica da aplicação escrita em JavaScript puro (ES6+), sem frameworks como React, Vue ou Angular.
+    *   Manipulação direta do DOM (`document.getElementById`, `addEventListener`).
+    *   Gerenciamento de estado simples via variáveis globais e `localStorage`.
+
+### 2. Backend & Dados (BaaS)
+*   **Supabase**: Utilizado como backend completo (Backend-as-a-Service).
+    *   Biblioteca carregada via CDN: `@supabase/supabase-js@2`.
+    *   Funções identificadas: Autenticação (tabela `clientes`), leitura de dados (`contratos_itens`, `contratos_chaves`).
+    *   Banco de dados PostgreSQL (tecnologia subjacente do Supabase).
+
+### 3. Bibliotecas Externas (CDNs)
+*   **Font Awesome 6**: Para ícones (`all.min.css`).
+*   **Google Fonts**: Tipografia (fonte **Inter**).
+
+### Resumo
+É uma **Single Page Application (SPA)** leve, contida inteiramente no `index.html`, que se conecta diretamente ao Supabase para buscar dados e autenticar usuários, sem necessidade de um servidor Node.js intermediário ou ferramentas de compilação (como Webpack/Vite).
+
+toolName: view_folder
+c:\_working\Projetos\ControleAvLockApp
+toolName: view_files
+filePath: c:\_working\Projetos\ControleAvLockApp\index.html
+filePath: c:\_working\Projetos\ControleAvLockApp\index.html
